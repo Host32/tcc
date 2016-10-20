@@ -1,0 +1,511 @@
+%% abtex2-modelo-relatorio-tecnico.tex, v<VERSION> laurocesar
+%% Copyright 2012-<COPYRIGHT_YEAR> by abnTeX2 group at http://www.abntex.net.br/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://www.abntex.net.br/
+%%
+%% This work consists of the files abntex2-modelo-relatorio-tecnico.tex,
+%% abntex2-modelo-include-comandos and references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Modelo de Relatório Técnico/Acadêmico em conformidade com 
+% ABNT NBR 10719:2015 Informação e documentação - Relatório técnico e/ou
+% científico - Apresentação
+% ------------------------------------------------------------------------ 
+% ------------------------------------------------------------------------
+
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	twoside,			% para impressão em recto e verso. Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	]{abntex2}
+
+
+% ---
+% PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes adicionais, usados no anexo do modelo de folha de identificação
+% ---
+\usepackage{multicol}
+\usepackage{multirow}
+% ---
+	
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Projeto de Automação de Operações e Entrega Contínua para Empresa de Desenvolvimento de Software.}
+\autor{Ivan de Moura Miranda}
+\local{Conselheiro Lafaiete}
+\data{2016}
+\instituicao{%
+  Faculdade Presidente Antônio Carlos -- FUPAC
+  \par
+  Engenharia de Computação
+  \par
+  Prof. Me. Jean Carlo Mendes}
+\tipotrabalho{Relatório técnico}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Relatório técnico apresentado como trabalho de conclusão de curso para obtenção do diploma do curso de Engenharia de Computação, Faculdade Presidente Antônio Carlos de Conselheiro Lafaiete. }
+% ---
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{relatório técnico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+\imprimirfolhaderosto*
+% ---
+
+
+% ---
+% RESUMO
+% ---
+
+% resumo na língua vernácula (obrigatório)
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+\begin{resumo}
+ Este trabalho descreve um projeto de otimização do processo de entrega de uma empresa de desenvolvimento de softwares. O objetivo é identificar as etapas de baixa produtividade para implementar ferramentas e aplicar metodologias que melhoram a qualidade dos softwares desenvolvidos. Durante o processo de desenvolvimento diversas tarefas repetitivas são executadas manualmente, com a automatização destas conseguimos reduzir o tempo investido no projeto, e com a aplicação de boas práticas de desenvolvimento, também garantimos melhor qualidade dos produtos desenvolvidos.
+
+ \noindent
+ \textbf{Palavras-chaves}: entrega contínua, integração contínua, \textit{devops}, metodologias ágeis.
+\end{resumo}
+% ---
+
+% ---
+% inserir lista de ilustrações
+% ---
+%\pdfbookmark[0]{\listfigurename}{lof}
+%\listoffigures*
+%\cleardoublepage
+% ---
+
+% ---
+% inserir lista de tabelas
+% ---
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+% ---
+
+% ---
+% inserir lista de abreviaturas e siglas
+% ---
+\begin{siglas}
+	\item[AWS] \textit{Amazon Web Services}
+	\item[BaaS] \textit{Back-end as a Service}
+	\item[devops] \textit{Development and Operations}
+	\item[IaaS] \textit{Infrastructure as a Service}
+	\item[PaaS] \textit{Platform as a Service}
+	\item[SaaS] \textit{Software as a Service}
+\end{siglas}
+% ---
+
+% ---
+% inserir lista de símbolos
+% ---
+%\begin{simbolos}
+%  \item[$ \Gamma $] Letra grega Gama
+%  \item[$ \Lambda $] Lambda
+%  \item[$ \zeta $] Letra grega minúscula zeta
+%  \item[$ \in $] Pertence
+%\end{simbolos}
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+\chapter{Introdução}
+Segundo uma pesquisa publicada pelo \citeonline{StackOverflow:DeveloperSurvey2016}, dentre os maiores desafios encontrados por desenvolvedores em seu ambiente de trabalho vemos como mais influentes a documentação ruim, os requisitos mal especificados e o processo de desenvolvimento ineficiente.
+
+Diante dessa realidade percebemos que o ambiente de desenvolvimento de softwares é negativamente afetado pela ineficiência do processo que muitas das vezes é excessivamente burocrático e pouco produtivo.
+
+ \begin{citacao}
+Mas ser burocrático não é o problema, pois as regras são necessárias para nortear qualquer tipo de trabalho. O problema reside, é claro, em ser excessivamente burocrático, gerando atividades/produtos que não agregam valor e consomem desnecessariamente tempo da equipe. \cite{EBusiness:ManifestoAgil}
+\end{citacao}
+
+Em busca de resolver estes e outros problemas, várias metodologias foram criadas, como os métodos ágeis, a cultura \textit{devops}, e as ferramentas que objetivam a automação dos processos de operação, permitindo a entrega contínua de software com a mínima intervenção humana, em busca de agilidade e qualidade do sistema entregue. O problema é que essa automação exige conhecimento de muitas tecnologias e ferramentas diferentes, o que é visto na maioria das vezes como barreira por desenvolvedores que não tem familiaridade com especificações de infraestrutura.
+
+De outro lado, várias empresas viram uma oportunidade de negócio atrelada a resolução destes problemas, e diversas plataformas começaram a surgir nos últimos anos, como o \textit{Developer Cloud Service} \cite{Oracle:DevOps}, \textit{Open Shift} \cite{RedHat:OpenShift} e o \textit{AWS Lambda} \cite{Amazon:Lambda}. Estas soluções buscam facilitar a vida dos desenvolvedores oferecendo infraestrutura, plataforma ou \textit{back-end} como serviço para as empresas de desenvolvimento, e algumas ainda oferecem ferramentas para gestão dos projetos do time de desenvolvimento.
+
+Apesar destas soluções prontas, o fato curioso é que, se não levarmos em conta o hardware e considerarmos apenas as ferramentas de automação fornecidas, boa parte delas são gratuitas e de código fonte aberto como o Git, Jenkins e Kubernetes. O próprio Open Shift por exemplo possui uma versão de código aberta que pode ser instalado na sua própria empresa com acesso a todos os recursos. Então a vantagem em contratar esse tipo de serviço se deve apenas a hospedagem na nuvem e ao baixo custo de manutenção dessas ferramentas que dispensam a necessidade de um profissional especializado contratado pela sua empresa, porém este custo ainda não é totalmente viável para micro e pequenas empresas, que de acordo com uma pesquisa realizada pela \citeonline{ABES:Pesquisa} representam 95,1\% das empresas de desenvolvimento e produção de tecnologia no Brasil.
+
+Diante desse cenário, boa parte do mercado nacional pode se sentir desmotivado a contratar um serviço desse tipo, pois é muito difícil prever o benefício real proporcionado, afinal, o custo do investimento é fácil calcular, mas o lucro estimado é complicado, uma vez que eficiência e eficácia precisam ser convertidas em dinheiro baseadas na confiança de que a automação irá realmente resolver os problemas da empresa.
+
+Uma alternativa a este investimento ainda existe, que é a capacitação profissional do time de desenvolvimento para a utilização das ferramentas gratuitas em servidores locais, que não precisam ser computadores muito potentes devido a baixa necessidade de escalabilidade e performance, uma vez que os usuários desses sistemas serão os próprios colaboradores da empresa.
+
+Para implantação desse ambiente automatizado que utiliza apenas ferramentas gratuitas, é necessário o estudo de uma gama de soluções a fim de identificar a que mais atende a real necessidade da empresa.
+
+% ---
+% Capitulos de Objetivo Geral
+% ---
+\section{Objetivos}
+
+Em uma tentativa de validar os benefícios da automação e entrega contínua num cenário real, graças ao apoio da DevelOP, uma empresa de desenvolvimento de software situada em Ouro Preto, este trabalho se propõe a implementar um ambiente de desenvolvimento integrado baseado no estudo de boas práticas e ferramentas gratuitas existentes no mercado buscando a automação das tarefas de operações e o aumento da qualidade dos softwares desenvolvidos. Objetiva-se também avaliar a eficácia dos métodos propostos graças a uma analise da performance da empresa antes e depois da implementação do projeto.
+
+% ---
+% Capitulos de Objetivos Específicos
+% ---
+\section{Organização dos capítulos}
+
+% ----------------------------------------------------------
+% PARTE - preparação da pesquisa
+% ----------------------------------------------------------
+\part{Preparação do relatório}
+
+% ---
+% Capitulos de Metodologia
+% ---
+\chapter{Metodologia}
+
+% ---
+% Capitulos de desenvolvimento
+% ---
+\chapter{Análise do cenário atual}
+
+\section{Cultura organizacional}
+
+\section{A gerência de projetos}
+
+\section{O processo de desenvolvimento}
+
+\section{Recursos disponíveis}
+
+\section{Coleta de dados}
+
+% ---
+% Capitulos de Procedimentos Experimentais
+% ---
+\chapter{Procedimentos Experimentais}
+
+\section{Estudo de metodologias e boas práticas de gestão}
+
+\section{Adaptando a rotina do time para atender as demandas da empresa}
+
+\section{Levantamento e comparativo de ferramentas}
+
+\section{Implantação do ambiente de desenvolvimento integrado}
+
+% ----------------------------------------------------------
+% Capitulo com exemplos de comandos inseridos de arquivo externo 
+% ----------------------------------------------------------
+
+\include{abntex2-modelo-include-comandos}
+
+
+% ----------------------------------------------------------
+% Parte de revisãod e literatura
+% ----------------------------------------------------------
+\part{Resultados}
+
+% ---
+% Capitulo de revisão de literatura
+% ---
+\chapter{Análise do novo cenário}
+
+\section{Coleta de dados}
+
+\section{Comparativos com o cenário anterior}
+
+\lipsum[1]
+
+\lipsum[2-3]
+
+% ---
+% Finaliza a parte no bookmark do PDF
+% para que se inicie o bookmark na raiz
+% e adiciona espaço de parte no Sumário
+% ---
+\phantompart
+
+% ---
+% Conclusão
+% ---
+\chapter{Conclusão}
+% ---
+
+\lipsum[31-33]
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{references}
+
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+%
+% Consulte o manual da classe abntex2 para orientações sobre o glossário.
+%
+%\glossary
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+
+% ---
+% Inicia os apêndices
+% ---
+\begin{apendicesenv}
+
+% Imprime uma página indicando o início dos apêndices
+\partapendices
+
+% ----------------------------------------------------------
+\chapter{Quisque libero justo}
+% ----------------------------------------------------------
+
+\lipsum[50]
+
+% ----------------------------------------------------------
+\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
+ac pretium ante justo a nulla curabitur tristique arcu eu metus}
+% ----------------------------------------------------------
+\lipsum[55-57]
+
+\end{apendicesenv}
+% ---
+
+
+% ----------------------------------------------------------
+% Anexos
+% ----------------------------------------------------------
+
+% ---
+% Inicia os anexos
+% ---
+\begin{anexosenv}
+
+% Imprime uma página indicando o início dos anexos
+\partanexos
+
+% ---
+\chapter{Morbi ultrices rutrum lorem.}
+% ---
+\lipsum[30]
+
+% ---
+\chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
+parturient montes nascetur ridiculus mus}
+% ---
+
+\lipsum[31]
+
+% ---
+\chapter{Fusce facilisis lacinia dui}
+% ---
+
+\lipsum[32]
+
+\end{anexosenv}
+
+%---------------------------------------------------------------------
+% INDICE REMISSIVO
+%---------------------------------------------------------------------
+
+\phantompart
+
+\printindex
+
+%---------------------------------------------------------------------
+% Formulário de Identificação (opcional)
+%---------------------------------------------------------------------
+\chapter*[Formulário de Identificação]{Formulário de Identificação}
+\addcontentsline{toc}{chapter}{Exemplo de Formulário de Identificação}
+\label{formulado-identificacao}
+
+Exemplo de Formulário de Identificação, compatível com o Anexo A (informativo)
+da ABNT NBR 10719:2015. Este formulário não é um anexo. Conforme definido na
+norma, ele é o último elemento pós-textual e opcional do relatório.
+
+\bigskip
+
+\begin{tabular}{|p{9cm}|p{5cm}|}
+\hline
+\multicolumn{2}{|c|}{\textbf{\large Dados do Relatório Técnico e/ou científico}}\\
+\hline
+\multirow{4}{10cm}[24pt]{Título e subtítulo}& Classificação de segurança\\
+                   & \\
+                   \cline{2-2}
+                   & No.\\
+                   & \\
+				
+\hline
+Tipo de relatório & Data\\
+\hline
+Título do projeto/programa/plano & No.\\
+\hline
+\multicolumn{2}{|l|}{Autor(es)} \\
+\hline
+\multicolumn{2}{|l|}{Instituição executora e endereço completo} \\
+\hline
+\multicolumn{2}{|l|}{Instituição patrocinadora e endereço completo} \\
+\hline
+\multicolumn{2}{|l|}{Resumo}\\[3cm]
+\hline
+\multicolumn{2}{|l|}{Palavras-chave/descritores}\\
+\hline
+\multicolumn{2}{|l|}{
+Edição \hfill No. de páginas \hfill No. do volume \hfill Nº de classificação \phantom{XXXX}} \\
+\hline
+\multicolumn{2}{|l|}{
+ISSN \hfill \hfill Tiragem \hfill Preço \phantom{XXXXXXXX}} \\
+\hline
+\multicolumn{2}{|l|}{Distribuidor} \\
+\hline
+\multicolumn{2}{|l|}{Observações/notas}\\[3cm]
+\hline
+\end{tabular}
+
+\end{document}
