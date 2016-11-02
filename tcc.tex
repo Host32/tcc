@@ -81,6 +81,12 @@
 \usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
 \usepackage[alf]{abntex2cite}	% Citações padrão ABNT
 
+% ---
+% Pacotes de check symbol
+% ---
+\usepackage{tikz}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
+
 % --- 
 % CONFIGURAÇÕES DE PACOTES
 % --- 
@@ -228,12 +234,13 @@
 \begin{siglas}
 	\item[AWS] \textit{Amazon Web Services}
 	\item[BaaS] \textit{Back-end as a Service}
-	\item[bug] \textit{...}
-	\item[build] \textit{...}
+	\item[bug] \textit{Defeito, falha ou erro no código de um programa que provoca seu mau funcionamento.}
+	\item[deploy] \textit{Implantação de uma versão do software em ambiente de produção}
 	\item[devops] \textit{Development and Operations}
 	\item[IaaS] \textit{Infrastructure as a Service}
 	\item[PaaS] \textit{Platform as a Service}
 	\item[SaaS] \textit{Software as a Service}
+	\item[SSH] \textit{Secure Shell}
 \end{siglas}
 % ---
 
@@ -305,19 +312,19 @@ Em uma tentativa de validar os benefícios da automação e entrega contínua nu
 % ---
 \chapter{Metodologia}
 
-A fim de avaliar os benefícios das soluções propostas, este trabalho será fundamentado na investigação a respeito do tema. As situações referentes ao objeto de estudo, que no caso se trata do processo de desenvolvimento de softwares da empresa DevelOP, serão examinadas com olhar investigativo buscando atingir a maior veracidade possível.
+A fim de avaliar os benefícios das soluções propostas, este trabalho foi fundamentado na investigação a respeito do tema. As situações referentes ao objeto de estudo, que no caso se trata do processo de desenvolvimento de softwares da empresa DevelOP, foram examinadas com olhar investigativo buscando atingir a maior veracidade possível.
 
-O projeto visa abordar o conhecimento a respeito da gerência de projetos, desenvolvimento e entrega de softwares e para isso se faz necessário direcionar a abordagem com base na utilização de material teórico, estabelecendo uma linha de investigação pela qual será conduzido o trabalho para que sejam levantado todo o material necessário com o intuito de estabelecer uma avaliação prática dos resultados obtidos.
+O projeto aborda conhecimentos a respeito da gerência de projetos, desenvolvimento e entrega de softwares e para isso se fez necessário direcionar a abordagem com base na utilização de material teórico, estabelecendo uma linha de investigação pela qual foi conduzido o trabalho para levantar todo o material necessário com o intuito de estabelecer uma avaliação prática dos resultados obtidos.
 
-Após o levantamento do material teórico o projeto será divido em 3 etapas. A primeira se baseia no estudo do cenário atual da empresa coletando e analisando dados em busca de identificar pontos problemáticos e levantar propostas de soluções. A segunda fase terá por objetivo implementar as soluções propostas e analisar seus efeitos no ambiente da empresa. A terceira fase terá a responsabilidade de mostrar os resultados e avaliar as soluções oferecidas e as vantagens que propõe.
+O projeto foi divido em 3 etapas. A primeira se baseou no estudo do cenário atual da empresa coletando e analisando dados em busca de identificar pontos problemáticos e levantar propostas de soluções. A segunda fase teve por objetivo implementar as soluções propostas e analisar seus efeitos no ambiente da empresa. A terceira fase teve a responsabilidade de mostrar os resultados e avaliar as soluções oferecidas e as vantagens que propõe.
 
-Este trabalho visa atuar utilizando o método experimental de forma a estudar os fatores que influenciam o tempo e a qualidade do processo de desenvolvimento, desta forma avaliando a veracidade das hipóteses levantadas.
+Este trabalho atuou utilizando o método experimental de forma a estudar os fatores que influenciam o tempo e a qualidade do processo de desenvolvimento, desta forma avaliando a veracidade das hipóteses levantadas.
 
 \section{Procedimentos para coleta e análise dos dados}
 
-A coleta dos dados será feita através do acompanhamento das rotinas da empresa para que o conhecimento da área no qual está focado o tema seja ampliado e permitindo uma análise mais enfática quando se necessita recolher informações de variados aspectos relacionados, assim preenchendo melhor as lacunas no projeto.
+A coleta dos dados foi feita através do acompanhamento das rotinas da empresa para que o conhecimento da área no qual está focado o tema seja ampliado e permitindo uma análise mais enfática quando se necessita recolher informações de variados aspectos relacionados, assim preenchendo melhor as lacunas no projeto.
 
-A análise dos dados será feita atrás do comparativo entre o antes e depois da implementação das soluções propostas. Comparando o tempo necessário para entregar uma nova versão do software, a relação entre a quantidade \textit{builds} quebradas e bem sucedidas por dia, a quantidade de  \textit{bugs} reportados por semana, a facilidade de manutenção do código e a satisfação dos desenvolvedores com o processo de desenvolvimento.
+A análise dos dados foi feita através do comparativo entre o antes e depois da implementação das soluções propostas. Comparando o tempo necessário para entregar uma nova versão do software, a relação entre a quantidade \textit{builds} quebradas e bem sucedidas por dia, a quantidade de  \textit{bugs} reportados por semana, a facilidade de manutenção do código e a satisfação dos desenvolvedores com o processo de desenvolvimento.
 
 
 % ---
@@ -345,11 +352,11 @@ A comunicação é feita de maneira informal devido a proximidade dos funcionár
 
 \section{Recursos disponíveis}
 
-O time de desenvolvimento é composto por (cargo do ivan), (cargo do henrique) e dois estagiários. As áreas de design, análise de negócios e jornalismo contam, cada uma, com apenas 1 funcionário.
+O time de desenvolvimento é composto por um desenvolvedor pleno e três estagiários incluindo o autor deste relatório. As áreas de design, análise de negócios e jornalismo contam, cada uma, com apenas 1 funcionário.
 
-Devido a parceria que a empresa tem com a Universidade Federal de Ouro Preto, algumas vezes no ano ela recebe a presença de inter cambistas de experiência e área de atuação diversificada.
+Devido a parceria que a empresa tem com a Universidade Federal de Ouro Preto, algumas vezes por ano ela recebe inter cambistas de experiência e área de atuação diversificada.
 
-Dos recursos que são relevantes para o objeto de estudo deste trabalho, a empresa terceiriza o serviço de hospedagem, contando com dois servidores dedicados de especificações idênticas que podem ser encontradas na \autoref{tab-spec-servidores}.
+Dos recursos que são relevantes para o objeto de estudo deste trabalho, a empresa terceiriza o serviço de hospedagem, contando com dois servidores dedicados cuja especificações podem ser encontradas na \autoref{tab-spec-servidores}.
 
 \begin{table}[htb]
 	\caption{Especificações técnicas dos servidores da empresa}
@@ -359,7 +366,7 @@ Dos recursos que são relevantes para o objeto de estudo deste trabalho, a empre
 	%\hline
 	 & \textbf{Servidor A} & \textbf{Servidor B}  \\
 	\hline
-	\textbf{CPU} & Intel(R) Core(TM) i5-4590 CPU @ 3.30GHz & Intel(R) Core(TM) i5-4590 CPU @ 3.30GHz \\
+	\textbf{CPU} & Intel(R) Core(TM) i5-4590 CPU @ 3.30GHz & AMD Opteron(tm) Processor 3280 \\
 	\hline
 	\textbf{Memória RAM} & 32 GB & 32 GB \\
 	\hline
@@ -372,18 +379,218 @@ Dos recursos que são relevantes para o objeto de estudo deste trabalho, a empre
 
 As metodologias envolvidas nos projetos da empresa são inspirados em métodos ágeis, alguns utilizam SCRUM e outros apenas Kanban, isso varia de acordo com os requisitos e recursos disponíveis para cada projeto, mas de forma geral, a empresa sempre busca manter um quadro de atividades (Kanban) e realizar reuniões frequentes.
 
+Através do acompanhamento do processo de desenvolvimento durante o período que este trabalho foi realizado, identifica-se um ciclo baseado em definição de requisitos, implementação e testes manuais. Inicialmente o coordenador do projeto realiza uma reunião com o time para especificar quais funcionalidades são prioritárias e detalhar o que precisa ser feito para seu desenvolvimento. Durante essa reunião é feita a divisão de atividades e a estipulação do tempo necessário por cada responsável. Uma pessoa é encarregada pelo registros das atividades no software de gestão, e em seguida cada membro do time começa a trabalhar na tarefa que lhe foi atribuída.
 
+Diariamente o time realiza reuniões de acompanhamento, onde informam seu progresso ao coordenador do projeto e tiram dúvidas com os demais colaboradores. Caso uma atividade seja concluída, uma nova pode ser atribuída.
+
+Durante o desenvolvimento, os programadores trabalham em \textit{branches} individuais com auxílio de um sistema de controle de versões. Eles testam manualmente cada funcionalidade em seu computador, e quando o time chega ao consentimento que existe um conjunto de funcionalidades pronto para ser entregue, algum membro do time compila o projeto em seu computador e realiza o envio do artefato gerado via SSH para o ambiente de produção. Durante essa etapa de entrega, caso a versão do artefato gerado apresente \textit{bugs}, o desenvolvedor responsável pela tarefa o corrige, gera uma nova versão e a envia novamente ao servidor de produção. Esta tarefa pode se repetir enquanto houverem \textit{bugs} que impossibilitem o correto funcionamento da aplicação.
+
+Caso as características do artefato gerado não influenciem negativamente no processo dos usuários do sistema, um teste manual é realizado no ambiente de produção.
+
+Quando surgem demandas imprevistas durante o ciclo de desenvolvimento, uma reunião é convocada para re-ajustarem o cronograma semanal e redistribuírem as tarefas. Caso um \textit{bugs} seja reportado pelo cliente, ele é avaliado quanto a sua criticidade e comparado à fila de tarefas pendentes. Caso seja um bug crítico, é tratado imediatamente, caso não seja critico e existam atividades prioritárias na fila, ele é registrado e levado em pauta na próxima reunião, onde o time reajusta o cronograma.
+
+\subsection{Dados coletados com a análise}
+
+A etapa de coleta de dados analíticos sobre o atual processo de desenvolvimento teve início no dia 8 de agosto de 2016. Durante essa etapa foram identificadas tarefas que fogem ao escopo de desenvolvimento e levantamento de requisitos, como atividades de compilação do código fonte, execução de testes manuais, configuração de ambientes de trabalho, etc. As execuções dessas atividades foram registradas a fim de sumarizar o tempo necessário e a quantidade de retrabalho envolvido. O acompanhamento e registro desses dados ocorreu até o dia 23 de setembro de 2016.
+
+As seguintes tabelas apresentam dados quantitativos referentes as etapas do processo de desenvolvimento durante a fase de coleta. Graças a essas informações podemos identificar pontos de aprimoramento em potencial.
+
+A \autoref{tab-code-analysis} apresenta dados analíticos referentes aos repositórios de código fonte da empresa.
+
+\begin{table}[htb]
+	\caption{Dados do repositório de código fonte no início do projeto}
+	
+	\label{tab-code-analysis}	
+	\begin{tabular}{p{7.15cm}|p{7.10cm}}
+		%\hline
+		\textbf{Métrica} & \textbf{Valor}  \\
+		\hline
+		Número de \textit{commits} realizados & 125 \\
+		\hline
+		Número de artefatos gerados & 65 \\
+		\hline
+		Número de mesclagem de código realizados & 6 \\
+		\hline
+		Número de \textit{bugs} reportados pelo cliente & 20 \\
+		\hline
+		Número de atividades desenvolvidas pelo time que foram registradas no sistema de controle de atividades & 70 \\
+		% \hline
+	\end{tabular}
+\end{table}
+
+
+A \autoref{tab-deploys} demonstra o tempo necessário por entrega de uma nova versão do sistema. Consideramos o tempo necessário para construção de um artefato executável e a sua disponibilização em ambiente de produção. Esta etapa engloba tentativas má sucedidas de construção e entrega de uma versão estável e sem \textit{bugs}.
+
+\begin{table}[htb]
+	\caption{Características das entregas no início do projeto}
+	
+	\label{tab-deploys}	
+	\begin{tabular}{p{3.85cm}|p{5.20cm}|p{5.20cm}}
+		%\hline
+		\textbf{Data da entrega} & \textbf{Tempo necessário} & \textbf{Número de tentativas má sucedidas até a conclusão da entrega}  \\
+		\hline
+		16/08/2016 & 2 horas & 0 \\
+		\hline
+		23/08/2016 & 6 horas & 3 \\
+		\hline
+		30/08/2016 & 3 horas & 1 \\
+		\hline
+		07/09/2016 & 6 horas & 5 \\
+		\hline
+		14/09/2016 & 8 horas & 7 \\
+		\hline
+		19/09/2016 & 4 horas & 2 \\
+		% \hline
+	\end{tabular}
+\end{table}
+
+Após a coleta de dados, uma entrevista foi realizada com o time de desenvolvimento onde foi solicitado que cada um citasse problemas marcantes que aconteceram com eles no decorrer do projeto com o objetivo de compreender a visão que o time tem sobre o processo de desenvolvimento em busca de identificar aspectos impactantes na rotina de trabalho que precisam ser melhorados. As seguintes respostas foram obtidas:
+
+\begin{itemize}  
+	\item Algum membro do time esqueceu de apagar um diretório que estava em lugar indevido, o que ocasionou a sobrecarga do disco-rígido do servidor do cliente, pois havia uma unidade de baixa quantidade de armazenamento disponível alocada apenas para o sistema operacional, e esta ficou inoperante, exigindo a investigação e remoção dos arquivos indevidos.
+	\item Em uma tentativa de entrega de uma nova versão, foi identificado a existência de um diretório chamado "teste" no ambiente de produção. Consultando o time sobre a necessidade daquele diretório e na tentativa de apaga-lo do sistema pois não deveria estar ali, foi comunicado que o ambiente de produção estava neste diretório e não no lugar correto onde deveria ser executado.
+	\item Em uma tentativa de entrega foi identificada a configuração indevida de permissões de um certo diretório feita por outro membro do time.
+	\item Por diversas vezes o time identificou problemas relacionados à implantação de uma nova versão devido a arquivos de propriedades configurados incorretamente.
+	\item Vários problemas já aconteceram devido a execução de \textit{scripts} no ambiente de produção sem os devidos testes serem realizados previamente.
+	\item Diversos problemas aconteceram devido a necessidade da configuração manual do ambiente de produção, uma vez que diretórios precisavam ser manipulados por linha de comando.
+\end{itemize}
+
+\subsection{Características do processo atual} 
+
+Baseado nos dados coletados durante a primeira fase do projeto identificamos como principais problemas o tempo necessário para entrega de uma nova versão estável do sistema e a inexistência de uma garantia de qualidade sobre os artefatos entregues. A qualidade neste contexto pode ser melhorada aumentando a capacidade do software atender a necessidade de mudanças, o que poderá ser identificado pela redução da quantidade de \textit{bugs}.
+
+Segundo \citeonline{Flavia:AnaliseSistemas}, a qualidade de um software está diretamente relacionada à qualidade do processo de desenvolvimento, dessa forma, é comum que a busca por um software de maior qualidade passe necessariamente por uma melhoria no processo de desenvolvimento.
+
+Relacionando as dificuldades reportadas pelo time com os problemas levantados, identificamos que as atividades que não são totalmente voltadas ao desenvolvimento nem ao levantamento de requisitos são os principais causadores dos problemas, provavelmente pela falta de especialistas em infraestrutura e pela falta de automação das atividades de implantação.
+
+Os problemas citados se mostram relevantes uma vez que já foram identificados por especialistas, como \citeonline[p.~136]{Caelum:ArquiteturaJava} que descrevem um ambiente com características similares ao ambiente da empresa alvo de estudo deste trabalho como um ambiente problemático e sujeito a diversas falhas.
+
+A partir de todos esses dados levantados, nossa linha investigativa foi elaborada em busca de reduzir o tempo necessário para implantação de novas versões do código, estabelecer métricas de qualidade, garantir que a versão de produção é estável e reduzir o número de versões defeituosas entregues pelo time.
 
 % ---
 % Capitulos de Procedimentos Experimentais
 % ---
 \chapter{Procedimentos Experimentais}
 
-\section{Estudo de metodologias e boas práticas de gestão}
+\section{Levantamento de metodologias e boas práticas}
 
 \section{Adaptando a rotina do time para atender as demandas da empresa}
 
-\section{Levantamento e comparativo de ferramentas}
+\section{Levantamento comparativo de ferramentas}
+
+Para elaboração de um ambiente de desenvolvimento com tarefas de operações automatizadas, visando aumento da produtividade, economia de tempo e garantia de qualidade, foi realizado um levantamento comparativo entre ferramentas gratuitas ou de código fonte aberto que possibilitem a aplicação de todos os métodos necessários especificados pela nova metodologia de trabalho.
+
+É importante que as ferramentas sejam integradas para agilizar a comunicação do time e que tenham interfaces de utilização que estejam de acordo com o novo processo de desenvolvimento estipulado.
+
+Para o cenário ideal, os seguintes tipos de ferramentas se fazem necessários:
+
+\begin{itemize}
+	\item Sistema de controle de versão com suporte a ramificações e pedidos de mesclagem de código submetidos a revisões preliminares.
+	\item Sistema de execução de \textit{build pipelines} com suporte a ambientes de testes.
+	\item Sistema de automação de implantações.
+	\item Sistema de monitoramento de recursos.
+\end{itemize}
+
+Uma pesquisa foi realizada para levantar as ferramentas disponíveis no mercado que atendem os requisitos levantados.
+
+A \autoref{tab-git} mostra os resultados da pesquisa para as ferramentas de controle de versão. Um requisito adicional a esta ferramenta é que ela deve operar utilizando \textit{git} devido a experiência do time de desenvolvimento.
+
+\begin{table}[htb]
+	\caption{Comparativo entre ferramentas de controle de versão de código baseadas em git disponíveis no mercado.}
+	
+	\label{tab-git}	
+	\begin{tabular}{p{5.35cm}|p{2.0cm}|p{2.0cm}|p{2.0cm}|p{2.0cm}}
+		%\hline
+		 & \textbf{GitHUB} & \textbf{BitBucket} & \textbf{Gogs} & \textbf{GitLab}  \\
+		\hline
+		\textbf{Hospedagem remota} & \checkmark & \checkmark & - & \checkmark \\
+		\hline
+		\textbf{Hospedagem local} & - & - & \checkmark & \checkmark \\
+		\hline
+		\textbf{Código aberto} & - & - & \checkmark & \checkmark \\
+		\hline
+		\textbf{Repositórios privados} & Pago & Limite de 5 usuários por repositório & \checkmark & \checkmark \\
+		\hline
+		\textbf{Gerência de organizações e times} & \checkmark & \checkmark & \checkmark & \checkmark \\
+		\hline
+		\textbf{Gerenciador de incidentes} & \checkmark & \checkmark & \checkmark & \checkmark \\
+		\hline
+		\textbf{Wiki} & \checkmark & \checkmark & \checkmark & \checkmark \\
+		\hline
+		\textbf{Pull requests} & \checkmark & \checkmark & Apenas entre um \textit{fork} e seu original & \checkmark \\
+		\hline
+		\textbf{Code Review} & \checkmark & \checkmark & Não permite comentários em trechos de código & \checkmark \\
+		\hline
+		\textbf{Web Hooks} & \checkmark & \checkmark & \checkmark & \checkmark \\
+		\hline
+		\textbf{Build pipeline} & - & \checkmark & - & \checkmark \\
+		\hline
+		\textbf{Pesquisa por trecho de código} & \checkmark & - & - & - \\
+		\hline
+		\textbf{Estatísticas de uso do repositório} & \checkmark & - & - & \checkmark \\
+		\hline
+		\textbf{Visualização gráfica das ramificações} & \checkmark & \checkmark & - & \checkmark \\
+		\hline
+		\textbf{Snippets} & \checkmark & \checkmark & - & \checkmark \\
+		% \hline
+	\end{tabular}
+\end{table}
+
+As ferramentas de execução de \textit{build pipelines} e de automação de rotinas de implantações podem ser encontradas na \autoref{tab-build-pipeline} 
+
+\begin{table}[htb]
+	\caption{Comparativo entre ferramentas de execução de \textit{build pipelines} disponíveis no mercado.}
+	
+	\label{tab-build-pipeline}	
+	\begin{tabular}{p{5.35cm}|p{2.0cm}|p{2.0cm}|p{2.0cm}|p{2.0cm}}
+		%\hline
+		& \textbf{Jenkins} & \textbf{GitLab} & \textbf{BitBucket} & \textbf{Travis CI}  \\
+		\hline
+		\textbf{Hospedagem remota} & - & \checkmark & \checkmark & \checkmark \\
+		\hline
+		\textbf{Hospedagem local} & \checkmark & \checkmark & - & - \\
+		\hline
+		\textbf{Código aberto} & \checkmark & \checkmark & - & - \\
+		\hline
+		\textbf{Construção de \textit{branches}} & \checkmark & \checkmark & \checkmark & \checkmark \\
+		\hline
+		\textbf{Construção de \textit{pull requestes}} & \checkmark & \checkmark & \checkmark & \checkmark \\
+		\hline
+		\textbf{Nível de complexidade} & Mediano & Simples & Simples & Simples \\
+		\hline
+		\textbf{Suporte a múltiplos ambientes} & \checkmark & \checkmark & Apenas variáveis de ambiente & Apenas variáveis de ambiente \\
+		\hline
+		\textbf{Integração com \textit{Docker} ou contêineres} & \checkmark & \checkmark & - & - \\
+		\hline
+		\textbf{Suporte a plugins} & \checkmark & - & - & - \\
+		\hline
+		\textbf{Suporte a rotinas de \textit{deploy}} & \checkmark & \checkmark & \checkmark & \checkmark \\
+		\hline
+		\textbf{Forma de definição da \textit{pipeline}} & Arquivo de configuração dentro do repositório ou através de uma interface gráfica & Arquivo de configuração dentro do repositório & Arquivo de configuração dentro do repositório & Arquivo de configuração dentro do repositório \\
+		% \hline
+	\end{tabular}
+\end{table}
+
+As ferramentas de monitoramento de recursos podem ser encontradas na \autoref{tab-monitoring} 
+
+\begin{table}[htb]
+	\caption{Comparativo entre ferramentas de monitoramento de recursos disponíveis no mercado.}
+	
+	\label{tab-monitoring}	
+	\begin{tabular}{p{5.0cm}|p{1.6cm}|p{1.4cm}|p{2.4cm}|p{1.6cm}|p{1.4cm}}
+		%\hline
+		& \textbf{Zabbix} & \textbf{Cacti} & \textbf{Prometheus} & \textbf{Nagios} & \textbf{Icinga} \\
+		\hline
+		\textbf{Hospedagem remota} & - & - & - & - & - \\
+		\hline
+		\textbf{Hospedagem local} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+		\hline
+		\textbf{Código aberto} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+		\hline
+		\textbf{Geração de gráficos} & \checkmark & \checkmark & \checkmark & Com \textit{plugins} & Com \textit{plugins} \\
+		% \hline
+	\end{tabular}
+\end{table}
 
 \section{Implantação do ambiente de desenvolvimento integrado}
 
