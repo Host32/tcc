@@ -482,7 +482,7 @@ Para elaboração de um ambiente de desenvolvimento com tarefas de operações a
 
 É importante que as ferramentas sejam integradas para agilizar a comunicação do time e que tenham interfaces de utilização que estejam de acordo com o novo processo de desenvolvimento estipulado.
 
-Para o cenário ideal, os seguintes tipos de ferramentas se fazem necessários:
+Para resolver os problemas do cenário atual da empresa os seguintes tipos de ferramentas se fazem necessários:
 
 \begin{itemize}
 	\item Sistema de controle de versão com suporte a ramificações e pedidos de mesclagem de código submetidos a revisões preliminares.
@@ -491,9 +491,17 @@ Para o cenário ideal, os seguintes tipos de ferramentas se fazem necessários:
 	\item Sistema de monitoramento de recursos.
 \end{itemize}
 
-Uma pesquisa foi realizada para levantar as ferramentas disponíveis no mercado que atendem os requisitos levantados.
+Além dessas ferramentas citadas, para implantação de um ambiente de entrega contínua completo, tolerante a falhas e altamente escalável, um série de ferramentas adicionais se fazem necessárias, como centralizadores de logs, provisionadores de ambientes, orquestradores de máquinas virtuais, dentre outros. Devido a limitações de tempo, nem todas as ferramentas foram avaliadas e aplicadas no ambiente da empresa. Como o objetivo deste trabalho é resolver os principais problemas relacionados a produtividade e qualidade do processo de desenvolvimento, a maior quantidade de esforço foi concentrada na implantação das principais ferramentas e na adaptação da metodologia de trabalho do time.
 
-A \autoref{tab-git} mostra os resultados da pesquisa para as ferramentas de controle de versão. Um requisito adicional a esta ferramenta é que ela deve operar utilizando \textit{git} devido a experiência do time de desenvolvimento.
+Uma pesquisa foi realizada para selecionar as ferramentas disponíveis no mercado que atendem os requisitos levantados, pois como foi apontado pela \citeonline{XebiaLabs:DevOpsTools}, existem centenas de ferramentas criadas para estes propósitos, e testar todas tornaria este trabalho completamente inviável por limitações de tempo e pelo surgimento constante de novas ferramentas similares. Devido a estes fatores, para cada tipo de ferramenta foram levantadas entre 4 e 5 opções mais populares baseadas em análises de sites especialistas em cada assunto.
+
+Diante do conjunto de ferramentas identificadas, as consideradas não cruciais para a boa conclusão deste trabalho não foram implantadas neste projeto. Por isso algumas das ferramentas descritas nos capítulos seguintes não apresentam um detalhamento tão aprofundado.
+
+\subsection{Sistema de controle de versão}
+
+Para escolher qual sistema de controle de versão usar levamos em conta que o time já possuía experiência prévia com \textit{git}, o que facilitaria sua utilização, e graças a análises feitas por \citeonline{DevMedia:VersionControl, InfoQ:VersionControl, SitePoint:VersionControl}, percebemos que o \textit{git} apresenta características que justificam ainda mais a sua escolha, mas ainda sim precisamos de uma ferramenta de controle de código fonte que tenha suporte a revisão e de preferência com uma interface gráfica para simplificar a gerência dos repositórios.
+
+A \autoref{tab-git} mostra os resultados da pesquisa para as ferramentas mais populares de controle de versão baseadas em git. A escolha dessas ferramentas foi feita baseando-se em recomendações de outros profissionais e recorrendo a análises feitas por sites como \citeonline{Slant:SourceControl} e \citeonline{StackShare:SourceControl}.
 
 \begin{table}[htb]
 	\caption{Comparativo entre ferramentas de controle de versão de código baseadas em git disponíveis no mercado.}
@@ -501,7 +509,7 @@ A \autoref{tab-git} mostra os resultados da pesquisa para as ferramentas de cont
 	\label{tab-git}	
 	\begin{tabular}{p{5.35cm}|p{2.0cm}|p{2.0cm}|p{2.0cm}|p{2.0cm}}
 		%\hline
-		 & \textbf{GitHUB} & \textbf{BitBucket} & \textbf{Gogs} & \textbf{GitLab}  \\
+		 & \textbf{GitHub} & \textbf{BitBucket} & \textbf{Gogs} & \textbf{GitLab}  \\
 		\hline
 		\textbf{Hospedagem remota} & \checkmark & \checkmark & - & \checkmark \\
 		\hline
@@ -536,7 +544,11 @@ A \autoref{tab-git} mostra os resultados da pesquisa para as ferramentas de cont
 	\end{tabular}
 \end{table}
 
-As ferramentas de execução de \textit{build pipelines} e de automação de rotinas de implantações podem ser encontradas na \autoref{tab-build-pipeline} 
+Baseando-se neste comparativo, chegamos a conclusão de que o GitHub e o BitBucket não representam a melhor escolha pelas limitações das versões gratuitas. Entre o Gogs e GitLab optamos pelo GitLab pela maior quantidade de recursos disponíveis.
+
+\subsection{Ferramentas de execução de \textit{build pipelines}}
+
+As ferramentas de execução de \textit{build pipelines} e de automação de rotinas de implantações podem ser encontradas na \autoref{tab-build-pipeline}. A seleção dessas ferramentas também foi feita levando-se em conta as análises feitas pelo \citeonline{StackShare:CI}, porém também foram inclusos o BitBucket e o GitLab devido ao fato de serem ferramentas que, além de darem suporte a estes requisitos, também realizam o controle de código fonte. Uma vez que é vantajoso ter menos ferramentas para administrar, elas tem preferência sobre as demais.
 
 \begin{table}[htb]
 	\caption{Comparativo entre ferramentas de execução de \textit{build pipelines} disponíveis no mercado.}
@@ -571,7 +583,13 @@ As ferramentas de execução de \textit{build pipelines} e de automação de rot
 	\end{tabular}
 \end{table}
 
-As ferramentas de monitoramento de recursos podem ser encontradas na \autoref{tab-monitoring} 
+Após a análise das funcionalidades disponíveis, o BitBucket e o Travis CI foram descartados pelas limitações das versões gratuitas. Ao experimentarmos o Jenkins e o GitLab na prática, percebemos que a quantidade de \textit{plugins} disponíveis para o Jenkins fazem com que ele se torne extremamente flexível em relação a diversidade de projetos e permitem análises profundas de quesitos como cobertura de testes, documentação e relatórios de compilação. Por outro lado o GitLab se mostra simples e prático para projetos menores e com menor diversidade.
+
+Devido a estes fatores optamos pela utilização das duas ferramentas, resolvemos executar a \textit{pipeline} no GitLab em projetos menores e menos complexos e deixamos o Jenkis para lidar com o processo de compilação de projetos maiores e mais complexos.
+
+\subsection{Ferramentas de monitoramento}
+
+As ferramentas de monitoramento de recursos, também identificadas com ajuda de análises de sites como \citeonline{DevOps:Monitoring} e \citeonline{StackShare:Monitoring} e de indicações de profissionais. Elas podem ser encontradas na \autoref{tab-monitoring}.
 
 \begin{table}[htb]
 	\caption{Comparativo entre ferramentas de monitoramento de recursos disponíveis no mercado.}
@@ -587,12 +605,49 @@ As ferramentas de monitoramento de recursos podem ser encontradas na \autoref{ta
 		\hline
 		\textbf{Código aberto} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
 		\hline
-		\textbf{Geração de gráficos} & \checkmark & \checkmark & \checkmark & Com \textit{plugins} & Com \textit{plugins} \\
+		\textbf{Geração de gráficos} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+		\hline
+		\textbf{Suporte a protocolo SNMP} & \checkmark & \checkmark &  \checkmark & \checkmark & \checkmark \\
+		\hline
+		\textbf{Suporte a protocolo JMX} & \checkmark &  \checkmark &  \checkmark & \checkmark & \checkmark \\
+		\hline
+		\textbf{Suporte a protocolo IPMI} & \checkmark & \checkmark &  \checkmark & \checkmark & \checkmark \\
+		\hline
+		\textbf{Cliente para coleta customizada} & \checkmark & \checkmark &  \checkmark & \checkmark & \checkmark \\
+		\hline
+		\textbf{Suporte a alertas e notificações de situações críticas} & \checkmark & - &  \checkmark & \checkmark & \checkmark \\
 		% \hline
 	\end{tabular}
 \end{table}
 
+Devido a pequena diferença em relação a quantidade de funcionalidades entre as ferramentas de monitoramento, utilizamos como critério a experiência do time com as ferramentas em busca de reduzir o tempo de aprendizado e optamos pelo Zabbix.
+
+\subsection{Centralização de logs}
+
+As ferramentas de centralização de logs foram deixadas de lado durante a execução deste projeto devido a limitações de tempo e pelo fato do time já realizar um bom trabalho administrando os logs gerados pela aplicação graças aos \textit{frameworks} de desenvolvimento utilizados. Porém uma breve análise de algumas das principais ferramentas de centralização de logs foi realizada para que um estudo de suas vantagens pudesse ser feito e essa decisão pudesse ser tomada.
+
+Uma das ferramentas mais descomplicada e robusta para centralização de logs se chama Kibana \cite{Kibana:Logs}. O Kibana é uma aplicação \textit{web} com interface simples e amigável que permite a visualização de arquivos de log e estatísticas. Basicamente ele funciona como uma ferramenta de visualização em conjunto do Elastic Search, que é o responsável pelo armazenamento dos arquivos de log. Para utilização do Kibana é necessário configurar sua aplicação para enviar e armazenar os logs no Elastic Search, e com algumas configurações, preparar o Kiabana para receber consultas e exibir painéis informativos sobre as informações registradas.
+
+Uma boa alternativa ao Kibana é o GrayLogs \cite{GrayLog:Logs}, que também funciona em conjunto do Elastic Search, porém uma das principais diferenças entre eles é que o GrayLog utiliza também o Apache Kafka como sistema intermediário de controle de mensagens que permite o particionamento do fluxo de dados entre \textit{clusters} de máquinas, o que é ideal para aplicações de analise de \textit{big data}. Diversas arquiteturas distribuídas podem se beneficiar desse modelo expandindo seu nível de controle e monitoramento do estado da aplicação.
+
+\subsection{Conteinerização e provisionamento}
+
+De acordo com os requisitos atuais dos projetos desenvolvidos pela empresa, apenas uma \textit{build pipeline} com \textit{deploy} automático configurado no Jenkins e no GitLab já se mostraram suficiente para atender as necessidades atuais, porem não podemos deixar de comentar sobre o uso de contêineres e provisionamento de máquinas virtuais, uma vez que essas tecnologias se mostram cada vez mais presentes em ambientes de desenvolvimento integrado, como pode ser observado em uma pesquisa publicada em 2016 pela \citeonline{RightScale:Docker}.
+
+Os contêineres são resultado uma nova tecnologia de máquinas virtuais capazes de serem executadas sem a necessidade de carregamento de supervisores, o que as tornam mais leves que as máquinas virtuais convencionais. A utilização de contêineres para implantar um software em produção traz vantagens como controle total do ambiente de execução da aplicação, mais organização para configurações, versionamento de infra-estrutura, maior controle de dependências a nível de sistema operacional, maior aproveitamento do hardware, dentre outras \cite{JamesTurbull:DockerBook}.
+
+Com a utilização de contêineres, o time de operações de uma empresa pode trabalhar com provisionamento de máquinas virtuais onde não há a necessidade de configuração manual de servidores, basta criar os \textit{scripts} de instanciação do contêiner, embutir a aplicação e inicia-lo no servidor de produção.
+
+O provisionamento e implantação dos contêineres feito puramente com Docker muitas vezes não é tão simples quanto poderia ser, é aqui que entram as ferramentas de orquestração. As ferramentas de orquestração mais populares segundo a pesquisa da \citeonline{RightScale:Docker} são o Puppet e o Chef, que muitas das vezes são utilizadas em conjunto. Além dessas duas, outras bem populares são o 
+Kubernetes \cite{Kubernetes:Orchestration} e o Open Shift \cite{OpenShift:Orchestration}.
+
+Essas ferramentas permitem a construção de arquivos de descrição de infraestrutura, onde o desenvolvedor pode especificar quais imagens de contêineres serão instanciadas, quais serão os volumes de dados persistentes que ficarão salvos em disco, quais são as dependências entre contêineres para que o serviço funcione corretamente, quantas réplicas de cada serviço devem ser instanciadas, qual política de reinicialização deve ser aplicada a cada serviço em caso de falha, quais os requisitos de consumo para o levantamento de mais réplicas, dentre várias outras especificações.
+
+Outra vantagem dessa abordagem é a construção de ambientes de testes e homologação idênticos ao ambiente de produção com uma quantidade mínima de trabalho necessário, reduzindo os riscos de comportamentos inesperados devido a ambientes diversificados.
+
 \section{Implantação do ambiente de desenvolvimento integrado}
+
+
 
 % ----------------------------------------------------------
 % Capitulo com exemplos de comandos inseridos de arquivo externo 
