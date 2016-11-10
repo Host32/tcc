@@ -211,7 +211,7 @@
 % resumo na língua vernácula (obrigatório)
 \setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
 \begin{resumo}
- Este trabalho descreve um projeto de otimização do processo de entrega de uma empresa de desenvolvimento de softwares. O objetivo é identificar as etapas de baixa produtividade para implementar ferramentas e aplicar metodologias que melhoram a qualidade dos softwares desenvolvidos. Durante o processo de desenvolvimento diversas tarefas repetitivas são executadas manualmente, com a automatização destas conseguimos reduzir o tempo investido no projeto, e com a aplicação de boas práticas de desenvolvimento, também garantimos melhor qualidade dos produtos desenvolvidos.
+ Este trabalho descreve um projeto de otimização do processo de entrega de uma empresa de desenvolvimento de \textit{softwares}. O objetivo é identificar as etapas de baixa produtividade para implementar ferramentas e aplicar metodologias que melhoram a qualidade dos produtos e serviços desenvolvidos. Durante o processo de desenvolvimento diversas tarefas repetitivas são executadas manualmente, com a automatização destas conseguimos reduzir o tempo investido no projeto, e com a aplicação de boas práticas de desenvolvimento, também conseguimos aumentar a estabilidade do sistema reduzindo o número de \textit{bugs} encontrados em produção.
 
  \noindent
  \textbf{Palavras-chaves}: entrega contínua, integração contínua, \textit{devops}, metodologias ágeis.
@@ -243,13 +243,16 @@
 	\item[bug] \textit{Defeito, falha ou erro no código de um programa que provoca seu mau funcionamento.}
 	\item[CPU] \textit{Central Processing Unit}
 	\item[DDD] \textit{Domain Drive Design}
-	\item[RAM] \textit{Random Access Memory}
 	\item[deploy] \textit{Implantação de uma versão do software em ambiente de produção}
 	\item[devops] \textit{Development and Operations}
 	\item[DNS] \textit{Domain Name System}
 	\item[IaaS] \textit{Infrastructure as a Service}
+	\item[IPMI] \textit{...}
+	\item[JMX] \textit{...}
 	\item[PaaS] \textit{Platform as a Service}
+	\item[RAM] \textit{Random Access Memory}
 	\item[SaaS] \textit{Software as a Service}
+	\item[SNMP] \textit{...}
 	\item[SSH] \textit{Secure Shell}
 	\item[TDD] \textit{Test Driven Development}
 	\item[XP] \textit{Extreme Programming}
@@ -284,17 +287,17 @@
 \chapter{Introdução}
 Segundo uma pesquisa publicada pelo \citeonline{StackOverflow:DeveloperSurvey2016}, dentre os maiores desafios encontrados por desenvolvedores em seu ambiente de trabalho vemos como mais influentes a documentação ruim, os requisitos mal especificados e o processo de desenvolvimento ineficiente.
 
-Diante dessa realidade percebemos que o ambiente de desenvolvimento de softwares é negativamente afetado pela ineficiência do processo que muitas das vezes é excessivamente burocrático e pouco produtivo.
+Diante dessa realidade percebemos que o ambiente de desenvolvimento de \textit{softwares} é negativamente afetado pela ineficiência do processo que muitas das vezes é excessivamente burocrático e pouco produtivo.
 
 \begin{citacao}
 Mas ser burocrático não é o problema, pois as regras são necessárias para nortear qualquer tipo de trabalho. O problema reside, é claro, em ser excessivamente burocrático, gerando atividades/produtos que não agregam valor e consomem desnecessariamente tempo da equipe. \cite{EBusiness:ManifestoAgil}
 \end{citacao}
 
-Em busca de resolver estes e outros problemas, várias metodologias foram criadas, como os métodos ágeis, a cultura \textit{devops}, e as ferramentas que objetivam a automação dos processos de operação, permitindo a entrega contínua de software com a mínima intervenção humana, em busca de agilidade e qualidade do sistema entregue. O problema é que essa automação exige conhecimento de muitas tecnologias e ferramentas diferentes, o que é visto na maioria das vezes como barreira por desenvolvedores que não tem familiaridade com especificações de infraestrutura.
+Em busca de resolver estes e outros problemas, várias metodologias foram criadas, como os métodos ágeis, a cultura \textit{devops}, e as ferramentas que objetivam a automação dos processos de operação, permitindo a entrega contínua de \textit{software} com a mínima intervenção humana, em busca de agilidade e qualidade do sistema entregue. O problema é que essa automação exige conhecimento de muitas tecnologias e ferramentas diferentes, o que é visto na maioria das vezes como barreira por desenvolvedores que não tem familiaridade com especificações de infraestrutura.
 
-De outro lado, várias empresas viram uma oportunidade de negócio atrelada a resolução destes problemas, e diversas plataformas começaram a surgir nos últimos anos, como o \textit{Developer Cloud Service} \cite{Oracle:DevOps}, \textit{Open Shift} \cite{RedHat:OpenShift} e o \textit{AWS Lambda} \cite{Amazon:Lambda}. Estas soluções buscam facilitar a vida dos desenvolvedores oferecendo infraestrutura, plataforma ou \textit{back-end} como serviço para as empresas de desenvolvimento, e algumas ainda oferecem ferramentas para gestão dos projetos do time de desenvolvimento.
+Na tentativa de resolver estes problemas, várias empresas viram uma oportunidade de negócio atrelada a consultoria e prestação de serviços nessa área, incentivando o surgimento de diversas plataformas, como o \textit{Developer Cloud Service} \cite{Oracle:DevOps}, \textit{Open Shift} \cite{RedHat:OpenShift} e o \textit{AWS Lambda} \cite{Amazon:Lambda}. Estas soluções buscam facilitar a vida dos desenvolvedores oferecendo infraestrutura, plataforma ou \textit{back-end} como serviço para as empresas de desenvolvimento, e algumas ainda oferecem ferramentas para gestão dos projetos do time de desenvolvimento.
 
-Apesar destas soluções prontas, o fato curioso é que, se não levarmos em conta o hardware e considerarmos apenas as ferramentas de automação fornecidas, boa parte delas são gratuitas e de código fonte aberto como o Git, Jenkins e Kubernetes. O próprio Open Shift por exemplo possui uma versão de código aberta que pode ser instalado na sua própria empresa com acesso a todos os recursos. Então a vantagem em contratar esse tipo de serviço se deve apenas a hospedagem na nuvem e ao baixo custo de manutenção dessas ferramentas que dispensam a necessidade de um profissional especializado contratado pela sua empresa, porém este custo ainda não é totalmente viável para micro e pequenas empresas, que de acordo com uma pesquisa realizada pela \citeonline{ABES:Pesquisa} representam 95,1\% das empresas de desenvolvimento e produção de tecnologia no Brasil.
+Apesar destas soluções semi prontas, se levarmos em conta apenas as ferramentas de automação fornecidas, boa parte delas são gratuitas e de código fonte aberto como o \textit{Git}, \textit{Jenkins} e \textit{Kubernetes}. O próprio \textit{Open Shift}, por exemplo, possui uma versão de código aberta que pode ser instalado em qualquer empresa com acesso a todos os recursos. Então as vantagem de pagar por esses tipos de serviço se devem a hospedagem na nuvem, a consultoria especializada e ao baixo custo de manutenção provido pela falta de necessidade de contratação de um profissional dedicado, porém este custo ainda não é totalmente viável para micro e pequenas empresas, que de acordo com uma pesquisa realizada pela \citeonline{ABES:Pesquisa} representam 95,1\% das empresas de desenvolvimento e produção de tecnologia no Brasil.
 
 Diante desse cenário, boa parte do mercado nacional pode se sentir desmotivado a contratar um serviço desse tipo, pois é muito difícil prever o benefício real proporcionado, afinal, o custo do investimento é fácil calcular, mas o lucro estimado é complicado, uma vez que eficiência e eficácia precisam ser convertidas em dinheiro baseadas na confiança de que a automação irá realmente resolver os problemas da empresa.
 
@@ -307,12 +310,16 @@ Para implantação desse ambiente automatizado que utiliza apenas ferramentas gr
 % ---
 \section{Objetivos}
 
-Em uma tentativa de validar os benefícios da automação e entrega contínua num cenário real, graças ao apoio da DevelOP, uma empresa de desenvolvimento de software situada em Ouro Preto, este trabalho se propõe a implementar um ambiente de desenvolvimento integrado baseado no estudo de boas práticas e ferramentas gratuitas existentes no mercado buscando a automação das tarefas de operações e o aumento da qualidade dos softwares desenvolvidos. Objetiva-se também avaliar a eficácia dos métodos propostos graças a uma analise da performance da empresa antes e depois da implementação do projeto.
+Em uma tentativa de validar os benefícios da automação e entrega contínua num cenário real, graças ao apoio da DevelOP, uma empresa de desenvolvimento de \textit{software} situada em Ouro Preto, este trabalho se propõe a modificar o ambiente de desenvolvimento da empresa baseando-se no estudo de boas práticas e ferramentas gratuitas buscando a automação das tarefas de operações e o aumento da qualidade dos \textit{softwares} desenvolvidos. Objetiva-se também avaliar a eficácia dos métodos propostos graças a um comparativo de performance da empresa antes e depois da implementação do projeto.
 
 % ---
 % Capitulos de Objetivos Específicos
 % ---
 \section{Organização dos capítulos}
+
+Este trabalho foi dividido em duas partes, a primeira apresenta os procedimentos preparatórios, incluindo a metodologia utilizada, o levantamento bibliográfico, a apresentação da empresa e os procedimentos experimentais realizados em tentativa de propor soluções para os problemas identificados.
+
+A segunda parte apresenta os resultados obtidos e realiza um comparativo entre o cenário da empresa antes e depois da implantação das metodologias sugeridas.
 
 % ----------------------------------------------------------
 % PARTE - preparação da pesquisa
@@ -324,9 +331,9 @@ Em uma tentativa de validar os benefícios da automação e entrega contínua nu
 % ---
 \chapter{Metodologia}
 
-A fim de avaliar os benefícios das soluções propostas, este trabalho foi fundamentado na investigação a respeito do tema. As situações referentes ao objeto de estudo, que no caso se trata do processo de desenvolvimento de softwares da empresa DevelOP, foram examinadas com olhar investigativo buscando atingir a maior veracidade possível.
+A fim de avaliar os benefícios das soluções propostas, este trabalho foi fundamentado na investigação a respeito do tema. As situações referentes ao objeto de estudo, que no caso se trata do processo de desenvolvimento de \textit{softwares} da empresa DevelOP, foram examinadas com olhar investigativo buscando atingir a maior veracidade possível.
 
-O projeto aborda conhecimentos a respeito da gerência de projetos, desenvolvimento e entrega de softwares e para isso se fez necessário direcionar a abordagem com base na utilização de material teórico, estabelecendo uma linha de investigação pela qual foi conduzido o trabalho para levantar todo o material necessário com o intuito de estabelecer uma avaliação prática dos resultados obtidos.
+O projeto aborda conhecimentos a respeito da gerência de projetos, desenvolvimento e entrega de \textit{softwares} e para isso se fez necessário direcionar a abordagem com base na utilização de material teórico, estabelecendo uma linha de investigação pela qual foi conduzido o trabalho para levantar todo o material necessário com o intuito de estabelecer uma avaliação prática dos resultados obtidos.
 
 O projeto foi divido em 3 etapas. A primeira se baseou no estudo do cenário atual da empresa coletando e analisando dados em busca de identificar pontos problemáticos e levantar propostas de soluções. A segunda fase teve por objetivo implementar as soluções propostas e analisar seus efeitos no ambiente da empresa. A terceira fase teve a responsabilidade de mostrar os resultados e avaliar as soluções oferecidas e as vantagens que propõe.
 
@@ -334,9 +341,85 @@ Este trabalho atuou utilizando o método experimental de forma a estudar os fato
 
 \section{Procedimentos para coleta e análise dos dados}
 
-A coleta dos dados foi feita através do acompanhamento das rotinas da empresa para que o conhecimento da área no qual está focado o tema seja ampliado e permitindo uma análise mais enfática quando se necessita recolher informações de variados aspectos relacionados, assim preenchendo melhor as lacunas no projeto.
+A coleta dos dados foi feita através do acompanhamento das rotinas da empresa para que o conhecimento da área de estudo seja ampliado, assim preenchendo melhor as lacunas no projeto.
 
-A análise dos dados foi feita através do comparativo entre o antes e depois da implementação das soluções propostas. Comparando o tempo necessário para entregar uma nova versão do software, a relação entre a quantidade \textit{builds} quebradas e bem sucedidas por dia, a quantidade de  \textit{bugs} reportados por semana, a facilidade de manutenção do código e a satisfação dos desenvolvedores com o processo de desenvolvimento.
+Foi realizado um comparativo seguindo algumas métricas como: tempo necessário para entregar uma nova versão do \textit{software}; relação entre a quantidade de \textit{builds} quebradas e bem sucedidas por dia; quantidade de \textit{bugs} reportados por semana; a facilidade de manutenção do código; e a satisfação dos desenvolvedores com o processo de desenvolvimento. A partir desse comparativo podemos concluir as vantagens e desvantagens da solução proposta bem como avaliar a eficiência e eficácia do novo processo.
+
+\chapter{Levantamento bibliográfico}
+
+\section{Metodologia ágil}
+
+As metodologias de desenvolvimento ágil foram criadas após o surgimento do manifesto ágil por \citeonline{Agil:Manifesto}, onde um grupo de especialistas renomados em computação definiu um conjunto de doze princípios de desenvolvimento de \textit{software} que deveriam ser seguidos por empresas que desejam melhorar a qualidade dos produtos e serviços oferecidos.
+
+\subsection{\textit{SCRUM}}
+
+Uma das metodologias ágeis mais famosa para gestão e planejamento de projetos de \textit{softwares} é o \textit{SCRUM}. Nele as atividades a serem implementadas são mantidas em uma lista conhecida como \textit{Product Backlog}, e o projeto é divido em ciclos chamados de \textit{Sprints} onde as atividades registradas no \textit{Backlog} são distribuídas entre o time de desenvolvimento de acordo com as prioridades levantadas pelo \textit{Product Owner}.
+
+Além dessa organização e controle de atividades, o \textit{SCRUM} sugere diversas outras práticas como reuniões diárias, reuniões de revisão de \textit{sprints} e reuniões de retrospectiva visando aumentar o nível de comunicação entre o time e garantir eficiência durante o desenvolvimento do projeto \cite{Agil:SCRUM}.
+
+\subsection{\textit{Extreme programming, XP}}
+
+Enquanto o \textit{SCRUM} é uma metodologia voltada para a gestão e planejamento de projetos de \textit{softwares}, o \textit{XP} por outro lado é um metodologia de desenvolvimento. O \textit{XP} alcança seu objetivo de ajudar a criar sistemas de melhor qualidade através de conjunto de valores, princípios e práticas que se diferem substancialmente da forma tradicional de se desenvolver \textit{software} \cite{Agil:XP}.
+
+Os valores no \textit{XP} servem para responder a seguinte pergunta: se todos na equipe se concentrarem naquilo que é importante para a equipe, em que devem se concentrar? E a resposta é um conjunto de cinco valores para guiar o desenvolvimento:
+
+\begin{itemize}
+	\item Comunicação
+	\item Coragem
+	\item \textit{Feedback}
+	\item Respeito
+	\item Simplicidade
+\end{itemize}
+
+Já os princípios existem para servir de ponte entre valores e práticas, dos quais podemos citar auto-semelhança, benefício mútuo, diversidade, humanismo, fluidez, melhora, qualidade, dentre outros.
+
+As práticas são vetores de onde você está e onde você pode chegar com \textit{XP}. Uma característica do \textit{XP} é que você progride em direção a um estado ideal de desenvolvimento eficaz, e as práticas representam aquilo que você verá as equipes \textit{XP} fazendo diariamente.
+
+As práticas são divididas em duas partes: primárias e corolárias. 
+
+As práticas primárias são práticas que você pode começar a adotar imediatamente de forma segura para melhorar seu esforço de desenvolvimento de \textit{software} das quais podemos citar o desenvolvimento orientado a testes, \textit{design} incremental, programação em par e integração contínua.
+
+As práticas corolárias são práticas difíceis ou perigosas de serem implementadas antes de se adotar as práticas primárias. Podemos citar a base de código unificada, código coletivo, contrato de escopo negociável e envolvimento do cliente real como práticas corolárias.
+
+\section{Integração contínua}
+
+Segundo \citeonline{Caelum:ArquiteturaJava}, integrar novas versões e alterações realizadas pela equipe ao repositório principal em uma frequência alta, sempre e o mais rápido possível, tentando minimizar a influência de janelas longas sem integração, é chamado integração contínua. 
+
+O autor diz que o tempo necessário para receber um \textit{feedback} em relação a uma alteração realizada no código de um sistema é um fator extremamente importante para garantir a qualidade do que está sendo desenvolvido, uma vez que quanto mais tardio o \textit{feedback} for recebido pelos desenvolvedores a respeito de um \textit{bug} ou funcionalidade que não atinge o objetivo, mais difícil é de se lembrar o que, como e os motivos pelos quais foi tomada uma decisão no desenvolvimento que resultou no mesmo.
+
+\begin{citacao}
+	É importante que a maior parte possível dos testes seja executada a cada \textit{commit}, para que a informação do impacto das alterações na base de código venha rapidamente, permitindo ao desenvolvedor agir de maneira adequada para corrigir falhas e \textit{bugs} que possam ter se introduzido.
+	\cite{Caelum:ArquiteturaJava}
+\end{citacao}
+
+Dessa forma concluímos que o resultado obtido através do uso de integração contínua no ambiente de desenvolvimento é a garantia de que o código existente no repositório é sempre estável, e a qualquer momento podemos gerar um novo artefato com a garantia de que o sistema está passando em todos os testes automáticos definidos durante o desenvolvimento.
+
+Para a automação da execução dos testes que garantem a qualidade do código durante as integrações, \citeonline{Jez:EntregaContinua} apresenta um padrão chamado de \textit{Build Pipeline} que é, em essência, uma implementação automatizada do processo de compilar todas as partes de uma aplicação, implantá-la em um ambiente qualquer, seja de homologação ou produção, testá-la e efetuar sua entrega final.
+
+\section{Entrega contínua}
+
+Segundo \citeonline{Jez:EntregaContinua}, a entrega contínua é uma extensão natural da integração contínua, é uma abordagem na qual as equipes asseguram que cada alteração no sistema é entregável, e que podemos liberar qualquer versão com o simples toque de um botão. A entrega contínua visa reduzir a complexidade de construção de uma nova versão, o que nos permite gerar versões com maior frequência o obter \textit{feedback} rápido sobre o que os usuários se importam.
+
+\section{\textit{DevOps}}
+
+Os especialistas se referem a \textit{DevOps} como uma cultura, um movimento e um ambiente devido ao fato de ser uma metodologia que envolve valores presentes desde o planejamento até a infraestrutura necessária para a implantação de aplicações.
+
+\begin{citacao}
+	\textit{DevOps} (um amálgama de desenvolvimento e operações) é um método de desenvolvimento de \textit{software} que enfatiza a comunicação, a colaboração e a integração entre os desenvolvedores de \textit{software} e os profissionais de operações de tecnologia da informação (TI).
+	\apud{NewRelic:DevOps}{Gartner:DevOps}
+\end{citacao}
+
+De acordo com \citeonline{NewRelic:DevOps}, os principais fundamentos estabelecidos pela \textit{DevOps} são:
+
+\begin{itemize}
+	\item \textbf{Colaboração:} os setores da empresa não devem criar disputas ou se isolarem entre si, a necessidade de colaboração abrange todos que participam do fornecimento de \textit{software}, inclusive testes, gestão de produtos, executivos, desenvolvimento e operações.
+	\item \textbf{Automação:} não se deve perder tempo com tarefas manuais que podem ser automatizadas.
+	\item \textbf{Integração contínua:} a prática de forçar os desenvolvedores a integrar seu trabalho com o de outros desenvolvedores frequentemente, pelo menos diariamente, expõe problemas de integração e conflitos antecipadamente, o que contribui para melhoria da qualidade do que é desenvolvido.
+	\item \textbf{Testes contínuos:} em um ambiente \textit{DevOps}, todo mundo se envolve nos testes. Os desenvolvedores certificam-se de, além de entregar códigos sem erros, fornecer conjuntos de dados de teste. Eles também ajudam os engenheiros de teste a configurar o ambiente de teste de modo a ficar o mais parecido possível com o ambiente de produção.
+	\item \textbf{Fornecimento contínua:} elevar o conceito de integração contínua em mais uma etapa, expandir a integração para toda cadeia de lançamento, incluindo controle de qualidade e operações.
+	\item \textbf{Monitoramento contínuo:} devido à grande quantidade de lançamentos, não é possível implementar o tipo de teste rigoroso pré-lançamento que caracteriza o desenvolvimento em cascata. Portanto, em um ambiente DevOps, as falhas devem ser encontradas e corrigidas em tempo real.
+\end{itemize}
+
 
 
 % ---
@@ -346,7 +429,7 @@ A análise dos dados foi feita através do comparativo entre o antes e depois da
 
 \section{Associação de Desenvolvimento de Software, Produtos e Pessoas da Região dos Inconfidentes Mineiros - DevelOP}
 
-A DevelOP é uma associação de direito privado, constituída na forma de sociedade civil de fins não lucrativos, com autonomia administrativa e financeira, fundada em 2016 por um grupo de profissionais em tecnologia da informação na região dos inconfidentes mineiros. A Associação tem por finalidade central realizar ações sociais de utilidade pública na área de desenvolvimento de software, produtos de software e pessoas.
+A DevelOP é uma associação de direito privado, constituída na forma de sociedade civil de fins não lucrativos, com autonomia administrativa e financeira, fundada em 2016 por um grupo de profissionais em tecnologia da informação na região dos inconfidentes mineiros. A Associação tem por finalidade central realizar ações sociais de utilidade pública na área de desenvolvimento de \textit{software}, produtos de \textit{software} e pessoas.
 
 Situada no centro de Ouro Preto, a associação tem como principal atividade econômica o desenvolvimento de programas de computador sob encomenda, mas também atua em atividades de desenvolvimento e licenciamento de programas de computador customizável, consultoria em tecnologia da informação e atividades de apoio à educação.
 
@@ -354,19 +437,19 @@ Apesar de ser uma empresa nova no mercado, a DevelOP já possui alguns projetos 
 
 \section{Estrutura organizacional}
 
-As atividades econômicas desenvolvidas pela empresa apresentam características que exigem a divisão de times em projetos, mesmo que alguns funcionários algumas vezes participem de mais de um projeto simultaneamente, como é o caso dos analistas de negócio por exemplo, a empresa se organiza para alocar os recursos temporariamente até sua liberação.
+As atividades econômicas desenvolvidas pela empresa apresentam características que exigem a divisão de times em projetos, mesmo que alguns funcionários algumas vezes participem de mais de um projeto simultaneamente, como é o caso dos analistas de negócio por exemplo. A empresa se organiza para alocar os recursos temporariamente até sua liberação.
 
-Atualmente a empresa trabalha com especialistas em áreas definidas, como desenvolvedores, administradores, designers, analistas de negócio e jornalistas. A maioria desses áreas é preenchida com apenas um profissional responsável por responder pelas demandas relacionadas ao seu domínio. Quando há a alocação de recursos para projetos, o responsável pela gerência do projeto analisa quais áreas serão relacionadas em que momento, e então é feita a alocação dos times.
+Atualmente a empresa trabalha com especialistas em áreas definidas, como desenvolvedores, administradores, \textit{designers}, analistas de negócio e jornalistas. A maioria dessas áreas é preenchida com apenas um profissional responsável por responder pelas demandas relacionadas ao seu domínio. Quando há a alocação de recursos para projetos, o responsável pela gerência do projeto analisa quais áreas serão relacionadas em que momento, e então é feita a alocação dos times.
 
 A comunicação é feita de maneira informal devido a proximidade dos funcionários e ao pequeno quadro de colaboradores.
 
 \section{Recursos disponíveis}
 
-O time de desenvolvimento é composto por um desenvolvedor pleno e três estagiários incluindo o autor deste relatório. As áreas de design, análise de negócios e jornalismo contam, cada uma, com apenas 1 funcionário.
+O time de desenvolvimento é composto por um desenvolvedor pleno e três estagiários incluindo o autor deste relatório. As áreas de \textit{design}, análise de negócios e jornalismo contam, cada uma, com apenas 1 funcionário.
 
 Devido a parceria que a empresa tem com a Universidade Federal de Ouro Preto, algumas vezes por ano ela recebe inter cambistas de experiência e área de atuação diversificada.
 
-Dos recursos que são relevantes para o objeto de estudo deste trabalho, a empresa terceiriza o serviço de hospedagem, contando com dois servidores dedicados cuja especificações podem ser encontradas na \autoref{tab-spec-servidores}.
+Dos recursos que são relevantes para o objeto de estudo deste trabalho, a empresa terceiriza a hospedagem dos servidores de aplicação, contando com dois computadores em ambiente remoto cuja especificações podem ser encontradas na \autoref{tab-spec-servidores}.
 
 \begin{table}[htb]
 	\caption{Especificações técnicas dos servidores da empresa}
@@ -389,23 +472,23 @@ Dos recursos que são relevantes para o objeto de estudo deste trabalho, a empre
 
 \section{O processo de desenvolvimento} 
 
-As metodologias envolvidas nos projetos da empresa são inspirados em métodos ágeis, alguns utilizam SCRUM e outros apenas Kanban, isso varia de acordo com os requisitos e recursos disponíveis para cada projeto, mas de forma geral, a empresa sempre busca manter um quadro de atividades (Kanban) e realizar reuniões frequentes.
+As metodologias envolvidas nos projetos da empresa são inspirados em métodos ágeis. Alguns utilizam \textit{SCRUM} e outros apenas \textit{Kanban}, isso varia de acordo com os requisitos e recursos disponíveis para cada projeto, mas de forma geral, a empresa sempre busca manter um quadro de atividades (\textit{Kanban}) e realizar reuniões frequentes.
 
-Através do acompanhamento do processo de desenvolvimento durante o período que este trabalho foi realizado, identifica-se um ciclo baseado em definição de requisitos, implementação e testes manuais. Inicialmente o coordenador do projeto realiza uma reunião com o time para especificar quais funcionalidades são prioritárias e detalhar o que precisa ser feito para seu desenvolvimento. Durante essa reunião é feita a divisão de atividades e a estipulação do tempo necessário por cada responsável. Uma pessoa é encarregada pelo registros das atividades no software de gestão, e em seguida cada membro do time começa a trabalhar na tarefa que lhe foi atribuída.
+Através do acompanhamento do processo de desenvolvimento durante o período que este trabalho foi realizado, identifica-se um ciclo baseado em definição de requisitos, implementação e testes manuais. Inicialmente o coordenador do projeto realiza uma reunião com o time para especificar quais funcionalidades são prioritárias e detalhar o que precisa ser feito para seu desenvolvimento. Durante essa reunião é feita a divisão de atividades e a estipulação do tempo necessário por cada responsável. Uma pessoa é encarregada pelo registros das atividades no \textit{software} de gestão, e em seguida cada membro do time começa a trabalhar na tarefa que lhe foi atribuída.
 
 Diariamente o time realiza reuniões de acompanhamento, onde informam seu progresso ao coordenador do projeto e tiram dúvidas com os demais colaboradores. Caso uma atividade seja concluída, uma nova pode ser atribuída.
 
-Durante o desenvolvimento, os programadores trabalham em \textit{branches} individuais com auxílio de um sistema de controle de versões. Eles testam manualmente cada funcionalidade em seu computador, e quando o time chega ao consentimento que existe um conjunto de funcionalidades pronto para ser entregue, algum membro do time compila o projeto em seu computador e realiza o envio do artefato gerado via SSH para o ambiente de produção. Durante essa etapa de entrega, caso a versão do artefato gerado apresente \textit{bugs}, o desenvolvedor responsável pela tarefa o corrige, gera uma nova versão e a envia novamente ao servidor de produção. Esta tarefa pode se repetir enquanto houverem \textit{bugs} que impossibilitem o correto funcionamento da aplicação.
+Durante o desenvolvimento, os programadores trabalham em \textit{branches}\footnote{Um \textit{branch} é uma divisão independente da linha de desenvolvimento e permite que desenvolvedores mantenham versões diferentes do código fonte enquanto estão desenvolvendo atividades distintas.} individuais com auxílio de um sistema de controle de versões chamado \textit{Gogs}, que é hospedado em um dos servidores remotos. Eles testam manualmente cada funcionalidade em seu computador, e quando o time chega ao consentimento que existe um conjunto de funcionalidades pronto para ser entregue, algum membro do time compila o projeto em seu computador e realiza o envio do artefato gerado através de uma comunicação de rede para o ambiente de produção. Durante essa etapa de entrega, caso a versão do artefato gerado apresente \textit{bugs}, o desenvolvedor responsável pela tarefa o corrige, gera uma nova versão e a envia novamente ao servidor de produção. Esta tarefa pode se repetir enquanto houverem \textit{bugs} que impossibilitem o correto funcionamento da aplicação.
 
 Caso as características do artefato gerado não influenciem negativamente no processo dos usuários do sistema, um teste manual é realizado no ambiente de produção.
 
-Quando surgem demandas imprevistas durante o ciclo de desenvolvimento, uma reunião é convocada para re-ajustarem o cronograma semanal e redistribuírem as tarefas. Caso um \textit{bugs} seja reportado pelo cliente, ele é avaliado quanto a sua criticidade e comparado à fila de tarefas pendentes. Caso seja um bug crítico, é tratado imediatamente, caso não seja critico e existam atividades prioritárias na fila, ele é registrado e levado em pauta na próxima reunião, onde o time reajusta o cronograma.
+Quando surgem demandas imprevistas durante o ciclo de desenvolvimento, uma reunião é convocada para re-ajustarem o cronograma semanal e redistribuírem as tarefas. Caso um \textit{bugs} seja reportado pelo cliente, ele é avaliado quanto a sua criticidade e comparado à fila de tarefas pendentes. Caso seja um \textit{bug} crítico, é tratado imediatamente, caso não seja critico e existam atividades prioritárias na fila, ele é registrado e levado em pauta na próxima reunião, onde o time reajusta o cronograma.
 
 \subsection{Dados coletados com a análise}
 
 A etapa de coleta de dados analíticos sobre o atual processo de desenvolvimento teve início no dia 8 de agosto de 2016. Durante essa etapa foram identificadas tarefas que fogem ao escopo de desenvolvimento e levantamento de requisitos, como atividades de compilação do código fonte, execução de testes manuais, configuração de ambientes de trabalho, etc. As execuções dessas atividades foram registradas a fim de sumarizar o tempo necessário e a quantidade de retrabalho envolvido. O acompanhamento e registro desses dados ocorreu até o dia 23 de setembro de 2016.
 
-As seguintes tabelas apresentam dados quantitativos referentes as etapas do processo de desenvolvimento durante a fase de coleta. Graças a essas informações podemos identificar pontos de aprimoramento em potencial.
+As tabelas 2 e 3 apresentam dados quantitativos referentes as etapas do processo de desenvolvimento durante a fase de coleta. Graças a essas informações podemos identificar pontos de aprimoramento em potencial.
 
 A \autoref{tab-code-analysis} apresenta dados analíticos referentes aos repositórios de código fonte da empresa.
 
@@ -469,9 +552,9 @@ Após a coleta de dados, uma entrevista foi realizada com o time de desenvolvime
 
 \subsection{Características do processo atual} 
 
-Baseado nos dados coletados durante a primeira fase do projeto identificamos como principais problemas o tempo necessário para entrega de uma nova versão estável do sistema e a inexistência de uma garantia de qualidade sobre os artefatos entregues. A qualidade neste contexto pode ser melhorada aumentando a capacidade do software atender a necessidade de mudanças, o que poderá ser identificado pela redução da quantidade de \textit{bugs}.
+Baseado nos dados coletados durante a primeira fase do projeto identificamos como principais problemas o tempo necessário para entrega de uma nova versão estável do sistema e a inexistência de uma garantia de qualidade sobre os artefatos entregues. A qualidade neste contexto pode ser melhorada aumentando a capacidade do \textit{software} atender a necessidade de mudanças, o que poderá ser identificado pela redução da quantidade de \textit{bugs}.
 
-Segundo \citeonline{Flavia:AnaliseSistemas}, a qualidade de um software está diretamente relacionada à qualidade do processo de desenvolvimento, dessa forma, é comum que a busca por um software de maior qualidade passe necessariamente por uma melhoria no processo de desenvolvimento.
+Segundo \citeonline{Flavia:AnaliseSistemas}, a qualidade de um \textit{software} está diretamente relacionada à qualidade do processo de desenvolvimento, dessa forma, é comum que a busca por um \textit{software} de maior qualidade passe necessariamente por uma melhoria no processo de desenvolvimento.
 
 Relacionando as dificuldades reportadas pelo time com os problemas levantados, identificamos que as atividades que não são totalmente voltadas ao desenvolvimento nem ao levantamento de requisitos são os principais causadores dos problemas, provavelmente pela falta de especialistas em infraestrutura e pela falta de automação das atividades de implantação.
 
@@ -483,82 +566,7 @@ A partir de todos esses dados levantados, nossa linha investigativa foi elaborad
 % Capitulos de Procedimentos Experimentais
 % ---
 
-\chapter{Levantamento bibliográfico}
-
-\section{Metodologia ágil}
-
-As metodologias de desenvolvimento ágil foram criadas após o surgimento do manifesto ágil por \citeonline{Agil:Manifesto}, onde um grupo de especialistas renomados em computação definiu um conjunto de doze princípios de desenvolvimento de software que deveriam ser seguidos por empresas que desejam melhorar a qualidade dos produtos e serviços oferecidos.
-
-\subsection{SCRUM}
-
-A metodologia ágil mais famosa para gestão e planejamento de projetos de softwares é o SCRUM. No SRUM as atividades a serem implementadas são mantidas em uma lista conhecida como \textit{Product Backlog}, e o projeto é divido em ciclos chamados de \textit{Sprints} onde as atividades registradas no \textit{Backlog} são distribuídas entre o time de desenvolvimento de acordo com as prioridades levantadas pelo \textit{Product Owner}.
-
-Além dessa organização e controle de atividades, o SCRUM sugere diversas outras práticas como reuniões diárias, reuniões de revisão de \textit{sprints} e reuniões de retrospectiva visando aumentar o nível de comunicação entre o time e garantir eficiência durante o desenvolvimento do projeto \cite{Agil:SCRUM}.
-
-\subsection{Extreme programming, XP}
-
-Enquanto o SCRUM é uma metodologia voltada para a gestão e planejamento de projetos de softwares, o XP por outro lado é um metodologia de desenvolvimento. O XP alcança seu objetivo de ajudar a criar sistemas de melhor qualidade através de conjunto de valores, princípios e práticas que se diferem substancialmente da forma tradicional de se desenvolver software \cite{Agil:XP}.
-
-Os valores no XP servem para responder a seguinte pergunta: se todos na equipe se concentrarem naquilo que é importante para a equipe, em que devem se concentrar? E a resposta é um conjunto de cinco valores para guiar o desenvolvimento:
-
-\begin{itemize}
-	\item Comunicação
-	\item Coragem
-	\item \textit{Feedback}
-	\item Respeito
-	\item Simplicidade
-\end{itemize}
-
-Já os princípios existem para servir de ponte entre valores e práticas, dos quais podemos citar auto-semelhança, benefício mútuo, diversidade, humanismo, fluidez, melhora, qualidade, dentre outros.
-
-As práticas são vetores de onde você está e onde você pode chegar com XP. Uma característica do XP é que você progride em direção a um estado ideal de desenvolvimento eficaz, e as práticas representam aquilo que você verá as equipes XP fazendo diariamente.
-
-As práticas são divididas em duas partes: primárias e corolárias. 
-
-As práticas primárias são práticas que você pode começar a adotar imediatamente de forma segura para melhorar seu esforço de desenvolvimento de software das quais podemos citar o desenvolvimento orientado a testes, design incremental, programação em par e integração contínua.
-
-As práticas corolárias são práticas difíceis ou perigosas de serem implementadas antes de se adotar as práticas primárias. Podemos citar a base de código unificada, código coletivo, contrato de escopo negociável e envolvimento do cliente real como práticas corolárias.
-
-\section{Integração contínua}
-
-Segundo \citeonline{Caelum:ArquiteturaJava}, integrar novas versões e alterações realizadas pela equipe ao repositório principal em uma frequência alta, sempre e o mais rápido possível, tentando minimizar a influência de janelas longas sem integração, é chamado integração contínua. 
-
-O autor diz que o tempo necessário para receber um \textit{feedback} em relação a uma alteração realizada no código de um sistema é um fator extremamente importante para garantir a qualidade do que está sendo desenvolvido, uma vez que quanto mais tardio o \textit{feedback for recebido} pelos desenvolvedores a respeito de um \textit{bug} ou funcionalidade que não atinge o objetivo, mais difícil é de se lembrar o que, como e os motivos pelos quais foi tomada uma decisão no desenvolvimento que resultou no mesmo.
-
-\begin{citacao}
-	É importante que a maior parte possível dos testes seja executada a cada \textit{commit}, para que a informação do impacto das alterações na base de código venha rapidamente, permitindo ao desenvolvedor agir de maneira adequada para corrigir falhas e \textit{bugs} que possam ter se introduzido.
-	\cite{Caelum:ArquiteturaJava}
-\end{citacao}
-
-Dessa forma concluímos que o resultado obtido através do uso de integração contínua no ambiente de desenvolvimento é a garantia de que o código existente no repositório é sempre estável, e a qualquer momento podemos gerar um novo artefato com a garantia de que o sistema está passando em todos os testes automáticos definidos durante o desenvolvimento.
-
-Para a automação da execução dos testes que garantem a qualidade do código durante as integrações, \citeonline{Jez:EntregaContinua} apresenta um padrão chamado de \textit{Build Pipeline} que é, em essência, uma implementação automatizada do processo de compilar todas as partes de uma aplicação, implantá-la em um ambiente qualquer, seja de homologação ou produção, testá-la e efetuar sua entrega final.
-
-\section{Entrega contínua}
-
-Segundo \citeonline{Jez:EntregaContinua}, a entrega contínua é uma extensão natural da integração contínua, é uma abordagem na qual as equipes asseguram que cada alteração no sistema é entregável, e que podemos liberar qualquer versão com o simples toque de um botão. A entrega contínua visa reduzir a complexidade de construção de uma nova versão, o que nos permite gerar versões com maior frequência o obter \textit{feedback} rápido sobre o que os usuários se importam.
-
-\section{DevOps}
-
-Os especialistas se referem a DevOps como uma cultura, um movimento e um ambiente devido ao fato de ser uma metodologia que envolve valores presentes desde o planejamento até a infraestrutura necessária para a implantação de aplicações.
-
-\begin{citacao}
-	DevOps (um amálgama de desenvolvimento e operações) é um método de desenvolvimento de software que enfatiza a comunicação, a colaboração e a integração entre os desenvolvedores de software e os profissionais de operações de tecnologia da informação (TI).
-	\apud{NewRelic:DevOps}{Gartner:DevOps}
-\end{citacao}
-
-De acordo com \citeonline{NewRelic:DevOps}, os principais fundamentos estabelecidos pela DevOps são:
-
-\begin{itemize}
-	\item \textbf{Colaboração:} os setores da empresa não devem criar disputas ou se isolarem entre si, a necessidade de colaboração abrange todos que participam do fornecimento de software, inclusive testes, gestão de produtos, executivos, desenvolvimento e operações.
-	\item \textbf{Automação:} não se deve perder tempo com tarefas manuais que podem ser automatizadas.
-	\item \textbf{Integração contínua:} a prática de forçar os desenvolvedores a integrar seu trabalho com o de outros desenvolvedores frequentemente, pelo menos diariamente, expõe problemas de integração e conflitos antecipadamente, o que contribui para melhoria da qualidade do que é desenvolvido.
-	\item \textbf{Testes contínuos:} em um ambiente DevOps, todo mundo se envolve nos testes. Os desenvolvedores certificam-se de, além de entregar códigos sem erros, fornecer conjuntos de dados de teste. Eles também ajudam os engenheiros de teste a configurar o ambiente de teste de modo a ficar o mais parecido possível com o ambiente de produção.
-	\item \textbf{Fornecimento contínua:} elevar o conceito de integração contínua em mais uma etapa, expandir a integração para toda cadeia de lançamento, incluindo controle de qualidade e operações.
-	\item \textbf{Monitoramento contínuo:} devido à grande quantidade de lançamentos, não é possível implementar o tipo de teste rigoroso pré-lançamento que caracteriza o desenvolvimento em cascata. Portanto, em um ambiente DevOps, as falhas devem ser encontradas e corrigidas em tempo real.
-\end{itemize}
-
-\chapter{Procedimentos Experimentais}
+\chapter{Procedimentos experimentais}
 
 \section{Adaptando a rotina do time para aplicar as metodologias em prática}
 
@@ -597,7 +605,7 @@ Além dessas ferramentas citadas, para implantação de um ambiente de entrega c
 
 Uma pesquisa foi realizada para selecionar as ferramentas disponíveis no mercado que atendem os requisitos levantados, pois como foi apontado pela \citeonline{XebiaLabs:DevOpsTools}, existem centenas de ferramentas criadas para estes propósitos, e testar todas tornaria este trabalho completamente inviável por limitações de tempo e pelo surgimento constante de novas ferramentas similares. Devido a estes fatores, para cada tipo de ferramenta foram levantadas entre 4 e 5 opções mais populares baseadas em análises de sites especialistas em cada assunto.
 
-Diante do conjunto de ferramentas identificadas, as consideradas não cruciais para a boa conclusão deste trabalho não foram implantadas neste projeto. Por isso algumas das ferramentas descritas nos capítulos seguintes não apresentam um detalhamento tão aprofundado.
+Diante do conjunto de ferramentas identificadas, as consideradas não cruciais para a boa conclusão deste trabalho não foram implantadas neste projeto. Por isso algumas das ferramentas descritas nas seções seguintes não apresentam um detalhamento tão aprofundado.
 
 \subsection{Sistema de controle de versão}
 
@@ -646,11 +654,11 @@ A \autoref{tab-git} mostra os resultados da pesquisa para as ferramentas mais po
 	\end{tabular}
 \end{table}
 
-Baseando-se neste comparativo, chegamos a conclusão de que o GitHub e o BitBucket não representam a melhor escolha pelas limitações das versões gratuitas. Entre o Gogs e GitLab optamos pelo GitLab pela maior quantidade de recursos disponíveis.
+Baseando-se neste comparativo, chegamos a conclusão de que o \textit{GitHub} e o \textit{BitBucket} não representam a melhor escolha pelas limitações das versões gratuitas. Entre o \textit{Gogs} e \textit{GitLab} optamos pelo \textit{GitLab} pela maior quantidade de recursos disponíveis.
 
 \subsection{Ferramentas de execução de \textit{build pipelines}}
 
-As ferramentas de execução de \textit{build pipelines} e de automação de rotinas de implantações podem ser encontradas na \autoref{tab-build-pipeline}. A seleção dessas ferramentas também foi feita levando-se em conta as análises feitas pelo \citeonline{StackShare:CI}, porém também foram inclusos o BitBucket e o GitLab devido ao fato de serem ferramentas que, além de darem suporte a estes requisitos, também realizam o controle de código fonte. Uma vez que é vantajoso ter menos ferramentas para administrar, elas tem preferência sobre as demais.
+As ferramentas de execução de \textit{build pipelines} e de automação de rotinas de implantações podem ser encontradas na \autoref{tab-build-pipeline}. A seleção dessas ferramentas também foi feita levando-se em conta as análises feitas pelo \citeonline{StackShare:CI}, porém também foram inclusos o \textit{BitBucket} e o \textit{GitLab} devido ao fato de serem ferramentas que, além de darem suporte a estes requisitos, também realizam o controle de código fonte. Uma vez que é vantajoso ter menos ferramentas para administrar, elas tem preferência sobre as demais.
 
 \begin{table}[htb]
 	\caption{Comparativo entre ferramentas de execução de \textit{build pipelines} disponíveis no mercado.}
@@ -666,28 +674,28 @@ As ferramentas de execução de \textit{build pipelines} e de automação de rot
 		\hline
 		\textbf{Código aberto} & \checkmark & \checkmark & - & - \\
 		\hline
-		\textbf{Construção de \textit{branches}} & \checkmark & \checkmark & \checkmark & \checkmark \\
+		\textbf{Construção de branches} & \checkmark & \checkmark & \checkmark & \checkmark \\
 		\hline
-		\textbf{Construção de \textit{pull requestes}} & \checkmark & \checkmark & \checkmark & \checkmark \\
+		\textbf{Construção de pull requestes} & \checkmark & \checkmark & \checkmark & \checkmark \\
 		\hline
 		\textbf{Nível de complexidade} & Mediano & Simples & Simples & Simples \\
 		\hline
 		\textbf{Suporte a múltiplos ambientes} & \checkmark & \checkmark & Apenas variáveis de ambiente & Apenas variáveis de ambiente \\
 		\hline
-		\textbf{Integração com \textit{Docker} ou contêineres} & \checkmark & \checkmark & - & - \\
+		\textbf{Integração com Docker ou contêineres} & \checkmark & \checkmark & - & - \\
 		\hline
 		\textbf{Suporte a plugins} & \checkmark & - & - & - \\
 		\hline
-		\textbf{Suporte a rotinas de \textit{deploy}} & \checkmark & \checkmark & \checkmark & \checkmark \\
+		\textbf{Suporte a rotinas de deploy} & \checkmark & \checkmark & \checkmark & \checkmark \\
 		\hline
-		\textbf{Forma de definição da \textit{pipeline}} & Arquivo de configuração dentro do repositório ou através de uma interface gráfica & Arquivo de configuração dentro do repositório & Arquivo de configuração dentro do repositório & Arquivo de configuração dentro do repositório \\
+		\textbf{Forma de definição da pipeline} & Arquivo de configuração dentro do repositório ou através de uma interface gráfica & Arquivo de configuração dentro do repositório & Arquivo de configuração dentro do repositório & Arquivo de configuração dentro do repositório \\
 		% \hline
 	\end{tabular}
 \end{table}
 
-Após a análise das funcionalidades disponíveis, o BitBucket e o Travis CI foram descartados pelas limitações das versões gratuitas. Ao experimentarmos o Jenkins e o GitLab na prática, percebemos que a quantidade de \textit{plugins} disponíveis para o Jenkins fazem com que ele se torne extremamente flexível em relação a diversidade de projetos e permitem análises profundas de quesitos como cobertura de testes, documentação e relatórios de compilação. Por outro lado o GitLab se mostra simples e prático para projetos menores e com menor diversidade.
+Após a análise das funcionalidades disponíveis, o \textit{BitBucket} e o \textit{Travis CI} foram descartados pelas limitações das versões gratuitas. Ao experimentarmos o \textit{Jenkins} e o \textit{GitLab} na prática, percebemos que a quantidade de \textit{plugins} disponíveis para o \textit{Jenkins} fazem com que ele se torne extremamente flexível em relação a diversidade de projetos e permitem análises profundas de quesitos como cobertura de testes, documentação e relatórios de compilação. Por outro lado o \textit{GitLab} se mostra simples e prático para projetos menores e com menor diversidade.
 
-Devido a estes fatores optamos pela utilização das duas ferramentas, resolvemos executar a \textit{pipeline} no GitLab em projetos menores e menos complexos e deixamos o Jenkis para lidar com o processo de compilação de projetos maiores e mais complexos.
+Devido a estes fatores optamos pela utilização das duas ferramentas, resolvemos executar a \textit{pipeline} no \textit{GitLab} em projetos menores e menos complexos e deixamos o \textit{Jenkis} para lidar com o processo de compilação de projetos maiores e mais complexos.
 
 \subsection{Ferramentas de monitoramento}
 
@@ -722,26 +730,26 @@ As ferramentas de monitoramento de recursos, também identificadas com ajuda de 
 	\end{tabular}
 \end{table}
 
-Devido a pequena diferença em relação a quantidade de funcionalidades entre as ferramentas de monitoramento, utilizamos como critério a experiência do time com as ferramentas em busca de reduzir o tempo de aprendizado e optamos pelo Zabbix.
+Devido a pequena diferença em relação a quantidade de funcionalidades entre as ferramentas de monitoramento, utilizamos como critério a experiência do time com as ferramentas em busca de reduzir o tempo de aprendizado e optamos pelo \textit{Zabbix}.
 
-\subsection{Centralização de logs}
+\subsection{Centralização de \textit{logs}}
 
-As ferramentas de centralização de logs foram deixadas de lado durante a execução deste projeto devido a limitações de tempo e pelo fato do time já realizar um bom trabalho administrando os logs gerados pela aplicação graças aos \textit{frameworks} de desenvolvimento utilizados. Porém uma breve análise de algumas das principais ferramentas de centralização de logs foi realizada para que um estudo de suas vantagens pudesse ser feito e essa decisão pudesse ser tomada.
+As ferramentas de centralização de \textit{logs} foram deixadas de lado durante a execução deste projeto devido a limitações de tempo e pelo fato do time já realizar um bom trabalho administrando os \textit{logs} gerados pela aplicação graças aos \textit{frameworks} de desenvolvimento utilizados. Porém uma breve análise de algumas das principais ferramentas de centralização de \textit{logs} foi realizada para que um estudo de suas vantagens pudesse ser feito e essa decisão pudesse ser tomada.
 
-Uma das ferramentas mais descomplicada e robusta para centralização de logs se chama Kibana \cite{Kibana:Logs}. O Kibana é uma aplicação \textit{web} com interface simples e amigável que permite a visualização de e análise de dados diversos em tempo real. Basicamente ele funciona como uma ferramenta de visualização em conjunto do Elastic Search, que é o responsável pelo armazenamento dos arquivos de log e outras métricas da aplicação. Para utilização do Kibana é necessário configurar sua aplicação para enviar e armazenar os logs no Elastic Search, e com algumas configurações, preparar o Kiabana para receber consultas e exibir painéis informativos sobre as informações registradas.
+Uma das ferramentas mais descomplicada e robusta para centralização de logs se chama \textit{Kibana}, que é uma aplicação \textit{web} com interface simples e amigável que permite a visualização de e análise de dados diversos em tempo real. Basicamente ele funciona como uma ferramenta de visualização em conjunto do \textit{Elastic Search}, que é o responsável pelo armazenamento dos arquivos de \textit{log} e outras métricas da aplicação. Para utilização do \textit{Kibana} é necessário configurar sua aplicação para enviar e armazenar os \textit{logs} no \textit{Elastic Search}, e com algumas configurações, preparar o \textit{Kiabana} para receber consultas e exibir painéis informativos sobre as informações registradas\cite{Kibana:Logs}.
 
-Uma boa alternativa ao Kibana é o GrayLogs \cite{GrayLog:Logs}, que também funciona em conjunto do Elastic Search, porém uma das principais diferenças entre eles é que o GrayLog utiliza também o Apache Kafka como sistema intermediário de controle de mensagens que permite o particionamento do fluxo de dados entre \textit{clusters} de máquinas, o que é ideal para aplicações de analise de \textit{big data}. Diversas arquiteturas distribuídas podem se beneficiar desse modelo expandindo seu nível de controle e monitoramento do estado da aplicação.
+Uma boa alternativa ao \textit{Kibana} é o \textit{GrayLogs} \cite{GrayLog:Logs}, que também funciona em conjunto do \textit{Elastic Search}, porém uma das principais diferenças entre eles é que o \textit{GrayLog} utiliza também o \textit{Apache Kafka} como sistema intermediário de controle de mensagens que permite o particionamento do fluxo de dados entre \textit{clusters} de máquinas, o que é ideal para aplicações de analise de \textit{big data}. Diversas arquiteturas distribuídas podem se beneficiar desse modelo expandindo seu nível de controle e monitoramento do estado da aplicação.
 
 \subsection{Conteinerização e provisionamento}
 
-Devido a limitações de tempo e analisando os resultados obtidos com os experimentos iniciais, apenas uma \textit{build pipeline} com \textit{deploy} automático configurado no Jenkins e no GitLab já se mostraram suficiente para elevar o nível de qualidade do processo atual, porem não podemos deixar de comentar sobre o uso de contêineres e provisionamento de máquinas virtuais, uma vez que essas tecnologias se mostram cada vez mais presentes em ambientes de desenvolvimento integrado, como pode ser observado em uma pesquisa publicada em 2016 pela \citeonline{RightScale:Docker}.
+Devido a limitações de tempo e analisando os resultados obtidos com os experimentos iniciais, apenas uma \textit{build pipeline} com \textit{deploy} automático configurado no \textit{Jenkins} e no \textit{GitLab} já se mostraram suficiente para elevar o nível de qualidade do processo atual, porem não podemos deixar de comentar sobre o uso de contêineres e provisionamento de máquinas virtuais, uma vez que essas tecnologias se mostram cada vez mais presentes em ambientes de desenvolvimento integrado, como pode ser observado em uma pesquisa publicada em 2016 pela \citeonline{RightScale:Docker}.
 
-Os contêineres são resultado uma nova tecnologia de máquinas virtuais capazes de serem executadas sem a necessidade de carregamento de supervisores, o que as tornam mais leves que as máquinas virtuais convencionais. A utilização de contêineres para implantar um software em produção traz vantagens como controle total do ambiente de execução da aplicação, mais organização para configurações, versionamento de infra-estrutura, maior controle de dependências a nível de sistema operacional, maior aproveitamento do hardware, dentre outras \cite{JamesTurbull:DockerBook}.
+Os contêineres são resultado uma tecnologia de máquinas virtuais capazes de serem executadas sem a necessidade de carregamento de supervisores, o que as tornam mais leves que as máquinas virtuais convencionais. A utilização de contêineres para implantar um \textit{software} em produção traz vantagens como controle total do ambiente de execução da aplicação, mais organização para configurações, versionamento de infra-estrutura, maior controle de dependências a nível de sistema operacional, maior aproveitamento do \textit{hardware}, dentre outras \cite{JamesTurbull:DockerBook}.
 
 Com a utilização de contêineres, o time de operações de uma empresa pode trabalhar com provisionamento de máquinas virtuais onde não há a necessidade de configuração manual de servidores, basta criar os \textit{scripts} de instanciação do contêiner, embutir a aplicação e inicia-lo no servidor de produção.
 
-O provisionamento e implantação dos contêineres feito puramente com Docker muitas vezes não é tão simples quanto poderia ser, é aqui que entram as ferramentas de orquestração. As ferramentas de orquestração mais populares segundo a pesquisa da \citeonline{RightScale:Docker} são o Puppet e o Chef, que muitas das vezes são utilizadas em conjunto. Além dessas duas, outras bem populares são o 
-Kubernetes \cite{Kubernetes:Orchestration} e o Open Shift \cite{OpenShift:Orchestration}.
+O provisionamento e implantação dos contêineres feito puramente com \textit{Docker} muitas vezes não é tão simples quanto poderia ser, é aqui que entram as ferramentas de orquestração. As ferramentas de orquestração mais populares segundo a pesquisa da \citeonline{RightScale:Docker} são o \textit{Puppet} e o \textit{Chef}, que muitas das vezes são utilizadas em conjunto. Além dessas duas, outras bem populares são o 
+\textit{Kubernetes} \cite{Kubernetes:Orchestration} e o \textit{Open Shift} \cite{OpenShift:Orchestration}.
 
 Essas ferramentas permitem a construção de arquivos de descrição de infraestrutura, onde o desenvolvedor pode especificar quais imagens de contêineres serão instanciadas, quais serão os volumes de dados persistentes que ficarão salvos em disco, quais são as dependências entre contêineres para que o serviço funcione corretamente, quantas réplicas de cada serviço devem ser instanciadas, qual política de reinicialização deve ser aplicada a cada serviço em caso de falha, quais os requisitos de consumo para o levantamento de mais réplicas, dentre várias outras especificações.
 
@@ -749,29 +757,29 @@ Outra vantagem dessa abordagem é a construção de ambientes de testes e homolo
 
 \section{Implantação do ambiente de desenvolvimento integrado}
 
-No início dos procedimentos de implantação das ferramentas escolhidas, foi realizado uma tentativa de instalação de uma ferramenta chamada Fabric8. Essa ferramenta promete facilitar o processo de instalação e configuração de diversos componentes de \textit{DevOps} como o GitLab, Jenkins, Kibana e etc. Feita para funcionar em conjunto do Kubernetes ou OpenShift, o Fabric8 traz uma interface gráfica que permite a iniciação de contêineres que executam as ferramentas de \textit{DevOps} com apenas um único clique, além de permitir a construção de novos serviços com a necessidade de pouquíssimas configurações.
+No início dos procedimentos de implantação das ferramentas escolhidas, foi realizado uma tentativa de instalação de uma ferramenta chamada \textit{Fabric8}. Essa ferramenta promete facilitar o processo de instalação e configuração de diversos componentes de \textit{DevOps} como o \textit{GitLab}, \textit{Jenkins}, \textit{Kibana} e etc. Feita para funcionar em conjunto do \textit{Kubernetes} ou \textit{Open Shift}, o \textit{Fabric8} traz uma interface gráfica que permite a iniciação de contêineres que executam as ferramentas de \textit{DevOps} com apenas um único clique, além de permitir a construção de novos serviços com a necessidade de pouquíssimas configurações.
 
-Foram realizadas tentativas de instalação do Fabric8 seguindo o passo a passo encontrado na documentação \cite{Fabric8:Docs}. No dia que teve início a implantação desse ambiente existiam 4 formas diferentes de se realizar a instalação da ferramenta, cada uma dependente de um serviço adicional diferente. Uma delas utilizava o Vagrant, outra o MiniKube, outra o MiniShift e a última necessitava do OpenShift Origin instalado no servidor.
+Foram realizadas tentativas de instalação do \textit{Fabric8} seguindo o passo a passo encontrado na documentação \cite{Fabric8:Docs}. No dia que teve início a implantação desse ambiente existiam 4 formas diferentes de se realizar a instalação da ferramenta, cada uma dependente de um serviço adicional diferente. Uma delas utilizava o \textit{Vagrant}, outra o \textit{MiniKube}, outra o \textit{MiniShift} e a última necessitava do \textit{Open Shift Origin} instalado no servidor.
 
-A primeira tentativa de instalação foi feita utilizando uma máquina virtual provisionada pelo Vagrant seguindo o próprio tutorial da página do Fabric8, porém após a instalação um erro ocorria sempre que uma tentativa de criação de projeto era realizada. Uma pesquisa foi realizada em tentativa de reparar esse erro e a melhor resposta obtida indicava que o problema acontecia devido a possível incompatibilidade entre a versão do sistema operacional do servidor e \textit{plugin} do Vagrant chamando Landrush, que é responsável pela descoberta de DNS dentro do ambiente virtualizado. Devido a impossibilidade de se alternar a versão do sistema operacional nessa etapa do projeto, essa possibilidade foi descartada.
+A primeira tentativa de instalação foi feita utilizando uma máquina virtual provisionada pelo \textit{Vagrant} seguindo o próprio tutorial da página do \textit{Fabric8}, porém após a instalação um erro ocorria sempre que uma tentativa de criação de projeto era realizada. Uma pesquisa foi realizada em tentativa de reparar esse erro e a melhor resposta obtida indicava que o problema acontecia devido a possível incompatibilidade entre a versão do sistema operacional do servidor e \textit{plugin} do \textit{Vagrant} chamando \textit{Landrush}, que é responsável pela descoberta de DNS dentro do ambiente virtualizado. Devido a impossibilidade de se alternar a versão do sistema operacional nessa etapa do projeto, essa possibilidade foi descartada.
 
-Uma segunda tentativa de instalação foi feita utilizando o MiniKube, porém essa forma tinha uma característica negativa de não persistir os projetos e a informação criada após a reinicialização do sistema, ou seja, sempre que o servidor era reiniciado todas as informações registradas eram perdidas. Devido a este aspecto essa opção foi descartada.
+Uma segunda tentativa de instalação foi feita utilizando o \textit{MiniKube}, porém essa forma tinha uma característica negativa de não persistir os projetos e a informação criada após a reinicialização do sistema, ou seja, sempre que o servidor era reiniciado todas as informações registradas eram perdidas. Devido a este aspecto essa opção foi descartada.
 
-A terceira tentativa foi realizada utilizando o MiniShift, mas este apresentou o mesmo comportamento do MiniKube e também foi descartado.
+A terceira tentativa foi realizada utilizando o \textit{MiniShift}, mas este apresentou o mesmo comportamento do \textit{MiniKube} e também foi descartado.
 
-A quarta tentativa foi feita realizando a instalação do OpenShift Origin através de uma imagem de contêiner fornecida pela Red Hat no servidor\cite{OpenShift:InstallGuide}. Nessa abordagem, um serviço chamado Router não conseguia as permissões adequadas para ser inicializado corretamente. 
+A quarta tentativa foi feita realizando a instalação do \textit{Open Shift Origin} através de uma imagem de contêiner fornecida pela \textit{Red Hat} no servidor\cite{OpenShift:InstallGuide}. Nessa abordagem, um serviço chamado \textit{Router} não conseguia as permissões adequadas para ser inicializado corretamente. 
 
 Devido a diversidade de problemas existentes em métodos alternativos de instalação dessa ferramenta ela foi descartada. Foi decidido que seria melhor ter um pouco mais de trabalho realizando a instalação de cada componente individualmente do que aplicar uma solução que aparece ainda ser instável.
 
-\subsection{Instalação do Docker}
+\subsection{Instalação do \textit{Docker}}
 
-Para simplificar a instalação das ferramentas e já preparar o servidor para execução de ambientes de testes resolvemos instalar o Docker e optar sempre por versões conteinerizadas das ferramentas.
+Para simplificar a instalação das ferramentas e já preparar o servidor para execução de ambientes de testes resolvemos instalar o \textit{Docker} e optar sempre por versões conteinerizadas das ferramentas.
 
-Os procedimento necessários para instalação do Docker podem ser encontrados na documentação oficial \cite{Docker:InstallGuide}. Para o ambiente da empresa, o \textit{script} de instalação utilizado está disponível no \autoref{apendice-script-install-docker}.
+Os procedimento necessários para instalação do \textit{Docker} podem ser encontrados na documentação oficial \cite{Docker:InstallGuide}. Para o ambiente da empresa, o \textit{script} de instalação utilizado está disponível no \autoref{apendice-script-install-docker}.
 
 \subsection{Instalação do sistema de controle de versão}
 
-O passo a passo da instalação do GitLab, que foi o sistema de controle de versão escolhido, foi seguido de acordo com as instruções de um repositório da versão conteinerizada da ferramenta \cite{GitHub:GitLabDocker}.
+O passo a passo da instalação do \textit{GitLab}, que foi o sistema de controle de versão escolhido, foi seguido de acordo com as instruções de um repositório da versão conteinerizada da ferramenta \cite{GitHub:GitLabDocker}.
 
 O primeiro passo é a realização do \textit{download} do arquivo docker-compose.yml a partir do seguinte comando no terminal:
 
@@ -782,11 +790,11 @@ O primeiro passo é a realização do \textit{download} do arquivo docker-compos
  
  Após o \textit{download} do arquivo, foi necessário altera-lo ajustando algumas configurações indicando e usuário e senha administrativa e a porta em que o serviço estará disponível.
  
- Depois bastou executar o Docker Compose no diretório onde se encontra este arquivo que a aplicação ficou disponível.
+ Depois bastou executar o \textit{Docker Compose} no diretório onde se encontra este arquivo que a aplicação ficou disponível.
 
 \subsection{Instalação da ferramenta de integração contínua}
 
-O procedimento para instalação do Jenkins foi realizado de acordo com as instruções da imagem oficial disponibilizada no Docker Hub \cite{DockerHub:Jenkins}.
+O procedimento para instalação do \textit{Jenkins} foi realizado de acordo com as instruções da imagem oficial disponibilizada no \textit{Docker Hub} \cite{DockerHub:Jenkins}.
 
 Um único comando é necessário para instalação:
 
@@ -797,11 +805,11 @@ $ docker run -p 8080:8080 -p 50000:50000 \
 
 \subsection{Instalação da ferramenta de monitoramento}
 
-A instalação do Zabbix foi realizada utilizando um arquivo de configuração para o Docker Compose encontrado no GitHbub \cite{GitHub:ZabbixCompose}. Após o \textit{download} do foi necessário altera-lo ajustando a porta em que a aplicação deve ser executada. Após o ajuste do arquivo de configuração basta executar o Docker Compose no diretório onde ele se encontra.
+A instalação do \textit{Zabbix} foi realizada utilizando um arquivo de configuração para o \textit{Docker Compose} encontrado no \textit{GitHub} \cite{GitHub:ZabbixCompose}. Após o \textit{download} do foi necessário altera-lo ajustando a porta em que a aplicação deve ser executada. Após o ajuste do arquivo de configuração basta executar o \textit{Docker Compose} no diretório onde ele se encontra.
 
-Uma ferramenta adicional foi instalada neste estágio para a criação de \textit{dashboards} de monitoramento, graças a recomendações do próprio guia de instalação do Zabbix \cite{Zabbix:Dockerized}.
+Uma ferramenta adicional foi instalada neste estágio para a criação de \textit{dashboards} de monitoramento, graças a recomendações do próprio guia de instalação do \textit{Zabbix} \cite{Zabbix:Dockerized}.
 
-A ferramenta se chama Grafana, e para sua instalação basta executar os comandos:
+A ferramenta se chama \textit{Grafana}, e para sua instalação basta executar os comandos:
 
 \begin{lstlisting}
 $ docker run -d -v /var/lib/grafana --name \
@@ -837,7 +845,7 @@ A \textit{dashboard} foi configurada para exibir o monitoramento em tempo real d
 
 A etapa de coleta de dados analíticos sobre o novo processo de desenvolvimento teve início no dia 11 de outubro de 2016. Durante essa etapa buscamos identificar quais foram as mudanças nas variáveis dependentes analisadas no começo do projeto, relacionadas a tarefas que fogem ao escopo de desenvolvimento e levantamento de requisitos, como atividades de compilação do código fonte, execução de testes manuais, configuração de ambientes de trabalho, etc. O acompanhamento e registro desses dados ocorreu até o dia 4 de novembro de 2016.
 
-As seguintes tabelas apresentam dados quantitativos referentes as etapas do novo processo de desenvolvimento. Graças a essas informações podemos analisar os resultados obtidos com a implantação das novas metodologias e boas práticas de desenvolvimento.
+As tabelas 6 e 7 apresentam dados quantitativos referentes as etapas do novo processo de desenvolvimento. Graças a essas informações podemos analisar os resultados obtidos com a implantação das novas metodologias e boas práticas de desenvolvimento.
 
 A \autoref{tab-code-analysis-new} apresenta dados analíticos referentes aos repositórios de código fonte da empresa.
 
@@ -896,21 +904,55 @@ A \autoref{tab-deploys-new} demonstra o tempo necessário por entrega de uma nov
 
 Apesar do tempo investido com a entregas no novo processo ser significativamente menor que no antigo, vale ressaltar que o time investe mais tempo no desenvolvimento de testes automatizados, porém o esforço é reduzido assim que cada teste é criado, pois não há necessidade de testes manuais.
 
-Após a coleta de dados, uma entrevista foi realizada com o time de desenvolvimento onde foi solicitado que cada um dissesse seu ponto de vista sobre as vantagens e desvantagens do novo processo de desenvolvimento:
+Após a coleta de dados, uma entrevista foi realizada com o time de desenvolvimento onde foi solicitado que cada um dissesse seu ponto de vista sobre as vantagens e desvantagens do novo processo de desenvolvimento. As principais observações identificadas na entrevista estão pontuadas a seguir:
 
 \begin{itemize}  
-	\item Fazer essa entrevista amanhã.
+	\item O time notou uma significativa redução do tempo necessário para identificar e resolver problemas, uma vez que as alterações realizadas são sempre pequenas e constantes, o campo de busca pela alteração que injetou o \textit{bug} é reduzido. E graças a automação do processo de entrega, as novas versões de correção são disponibilizadas rapidamente. 
+	\item Uma vez que as correções são entregues mais rapidamente, o time reconheceu maior satisfação do cliente, que apesar de ainda encontrar alguns \textit{bugs}, se mostrou bastante satisfeito com o tempo de resposta.
+	\item Apesar de todas essas vantagens algumas dificuldades ainda são encontradas por alguns membros do time que precisaram aprender a utilizar várias ferramentas novas.
+	\item O processo de \textit{code review} algumas vezes se mostra desnecessariamente burocrático, pois se há necessidade de uma correção ser disponibilizada imediatamente, é necessário interromper outro desenvolvedor para efetuar o \textit{code review}. Apesar desse trabalho adicional, o time ainda se mostra satisfeito ao utilizar essa prática, pois isso fornece mais segurança de que as alterações são estáveis e economiza tempo de investigação futura.
 \end{itemize}
 
 \section{Comparativos com o cenário anterior}
 
+A \autoref{tab-comparativo} apresenta um comparativo entre os dados coletados antes e depois da conclusão do projeto, evidenciando as melhorias obtidas. Os dados exibidos na tabela representam uma média mensal dos dados coletados.
+
+\begin{table}[htb]
+	\caption{Comparativo baseado em uma média mensal dos dados coletados antes e depois da conclusão do projeto.}
+	
+	\label{tab-comparativo}	
+	\begin{tabular}{p{7.85cm}|p{3.20cm}|p{3.20cm}}
+		%\hline
+		& \textbf{Antes} & \textbf{Depois}  \\
+		\hline
+		\textbf{Tempo médio necessário para realizar a entrega de uma nova versão} & 5 horas & 33 segundos \\
+		\hline
+		\textbf{Média de tentativas má sucedidas até a conclusão de uma entrega} & 3 & 0 \\
+		\hline
+		\textbf{Número de commits realizados} & 62 & 434 \\
+		\hline
+		\textbf{Número de artefatos gerados} & 32 & 115 \\
+		\hline
+		\textbf{Número de mesclagem de código realizadas} & 3 & 19 \\
+		\hline
+		\textbf{Número de mesclagem de código rejeitadas} & 1 & 3 \\
+		\hline
+		\textbf{Número de bugs reportados pelo cliente} & 10 & 6 \\
+		\hline
+		\textbf{Número de atividades desenvolvidas pelo time que foram registradas no sistema de controle de atividades} & 35 & 34 \\
+		\hline
+		\textbf{Tempo médio de execução de build pipelines} & - & 5 minutos \\
+		% \hline
+	\end{tabular}
+\end{table}
+
 Ao compararmos os dados colhidos no fim do projeto com os do início, percebemos uma melhoria significativa no tempo investido com entregas de novas versões e com a qualidade do produto oferecido.
 
-Lembrando que os dados no início do projeto foram coletados por dois meses e no fim apenas um mês, percebemos que agora o time realiza 7 vezes mais \textit{commits} e 6 vezes mais mesclagem de código, o que é reflexo da prática integração contínua. Como cada alteração é menor e é testada automaticamente, o esforço necessário para identificar e corrigir \textit{bugs} é reduzido.
+Lembrando que os dados no início do projeto foram coletados por dois meses e no fim apenas um mês, percebemos que agora o time realiza 7 vezes mais \textit{commits} e 6 vezes mais mesclagem de código, o que é reflexo da prática integração contínua. Como cada alteração é menor e é testada automaticamente graças as \textit{build pipelines} do \textit{Jenkins} e \textit{GitLab}, o esforço necessário para identificar e corrigir \textit{bugs} é reduzido.
 
-Percebemos também que o time realiza duas vezes mais entregas, e consegue ser em média 237 vezes mais rápido para disponibilizar uma nova versão do que era inicialmente, graças ao fato do código do repositório ser sempre confiável e estável.
+Percebemos também que o time realiza duas vezes mais entregas, e consegue ser em média 237 vezes mais rápido para disponibilizar uma nova versão do que era inicialmente, graças ao fato do código do repositório ser sempre confiável e estável e do processo de entrega ser automatizado com auxílio do \textit{Jenkins}.
 
-A quantidade de \textit{bugs} reportados pelo cliente não apresentou uma redução significativa, mas devido ao tempo necessário de entrega ser menor, o tempo gasto para corrigir \textit{bugs} e colocar a correção em produção também é reduzido.
+A quantidade de \textit{bugs} reportados pelo cliente também apresentou uma redução significativa e devido ao tempo necessário de entrega ser menor, o tempo gasto para corrigir \textit{bugs} e colocar a correção em produção também é reduzido. O \textit{Zabbix} colabora nesse cenário por apresentar indicativos de consumo de recursos no servidor, agilizando o processo de investigação graças as informações coletadas.
 
 E por último, um fator positivo pode ser notado nas respostas dadas pelo time de desenvolvimento, que aparenta estar mais satisfeito com o trabalho realizado e tem mais tempo pra investir no que é realmente importante para o projeto.
 
@@ -919,8 +961,6 @@ E por último, um fator positivo pode ser notado nas respostas dadas pelo time d
 De todas as atividades executadas durante este projeto, a mais complexa foi o ajuste realizado nas rotinas do time de desenvolvimento, e isso só pôde ser realizado graças ao apoio e incentivo de todos os colaboradores durante todo o processo. Se não houvesse o \textit{feedback} que permitisse compreender porquê o problema existe, não seria possível chegar a um resultado efetivo.
 
 A parte de escolha e instalação de ferramentas não apresentou dificuldades significativas, mas entender como elas funcionam e como utiliza-las para colocar as metodologias em prática foi um grande desafio.
-
-Ter em mente a filosofia de ser preguiçoso ajuda bastante, mas preguiçoso no sentido de querer automatizar tudo para não ter trabalho desnecessário depois, e não preguiçoso no sentido de optar pelo que é mais simples sempre, por que as vezes automatizar da tanto trabalho que você simplesmente deixa pra depois.
 
 É importante sempre compartilhar a visão do negócio com o time e permitir que todos compreendam o trabalho e o papel de todos dentro da empresa. Isso facilita a comunicação, evita conflitos desnecessários e colabora para que não haja disputa entre setores. É extremamente importante fazer com que todos trabalhem juntos.
 
@@ -934,7 +974,7 @@ Na etapa atual de desenvolvimento ainda não é um requisito da aplicação ser 
 
 Com o crescimento distribuído da aplicação, imaginamos também que chegará o ponto onde será necessário centralizar os logs e as informações de avaliação da aplicação. Hoje a quantidade reduzida de módulos não traz dificuldades de rastreio de \textit{bugs} ou registros de acontecimentos, mas isso pode complicar ao longo do tempo.
 
-Para os projetos desenvolvidos pela empresa que são oferecidos como produtos ou serviços proprietários, será necessário também a automação do processo de provisionamento de infraestrutura e hardware, para isso será necessário o uso avançado de orquestradores e contêineres.
+Para os projetos desenvolvidos pela empresa que são oferecidos como produtos ou serviços proprietários, será necessário também a automação do processo de provisionamento de infraestrutura e \textit{hardware}, para isso será necessário o uso avançado de orquestradores e contêineres.
 
 % ---
 % Finaliza a parte no bookmark do PDF
@@ -949,7 +989,7 @@ Para os projetos desenvolvidos pela empresa que são oferecidos como produtos ou
 \chapter{Conclusão}
 % ---
 
-Este trabalho mostra que é extremamente vantajoso a utilização de metodologias ágeis bem como a automação de operações e entrega contínua. Os resultados mostram que o tempo necessário com tarefas de entrega de software em um ambiente integrado e automatizado representa 0,4\% do tempo necessário em cenário onde essas tarefas são realizadas manualmente.
+Este trabalho mostra que é extremamente vantajoso a utilização de metodologias ágeis bem como a automação de operações e entrega contínua. Os resultados mostram que o tempo necessário com tarefas de entrega de \textit{software} em um ambiente integrado e automatizado representa 0,4\% do tempo necessário em cenário onde essas tarefas são realizadas manualmente.
 
 Além do tempo economizado, percebemos também uma melhoria na qualidade dos produtos e serviços oferecidos, uma vez que acontecem menos problemas no momento da entrega devido ao fato do código está sempre estável.
 
