@@ -31,7 +31,7 @@
 	% -- opções da classe memoir --
 	12pt,				% tamanho da fonte
 	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
-	twoside,			% para impressão em recto e verso. Oposto a oneside
+	oneside,			% para impressão em recto e verso. Oposto a oneside
 	a4paper,			% tamanho do papel. 
 	% -- opções da classe abntex2 --
 	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
@@ -211,7 +211,7 @@
 % resumo na língua vernácula (obrigatório)
 \setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
 \begin{resumo}
- Este trabalho descreve um projeto de otimização do processo de entrega de uma empresa de desenvolvimento de \textit{softwares}. O objetivo é identificar as etapas de baixa produtividade para implementar ferramentas e aplicar metodologias que melhoram a qualidade dos produtos e serviços desenvolvidos. Durante o processo de desenvolvimento diversas tarefas repetitivas são executadas manualmente, com a automatização destas conseguimos reduzir o tempo investido no projeto, e com a aplicação de boas práticas de desenvolvimento, também conseguimos aumentar a estabilidade do sistema reduzindo o número de \textit{bugs} encontrados em produção.
+ Este trabalho descreve o projeto de otimização do processo de entrega de uma empresa de desenvolvimento de \textit{softwares}. O objetivo é identificar as etapas de baixa produtividade para implementar ferramentas e aplicar metodologias que melhoram a qualidade dos produtos e serviços desenvolvidos. Durante o processo de desenvolvimento diversas tarefas repetitivas são executadas manualmente, com a automatização destas conseguimos reduzir o tempo investido no projeto, e com a aplicação de boas práticas de desenvolvimento, também conseguimos aumentar a estabilidade do sistema reduzindo o número de \textit{bugs} encontrados em produção.
 
  \noindent
  \textbf{Palavras-chaves}: entrega contínua, integração contínua, \textit{devops}, metodologias ágeis.
@@ -247,12 +247,12 @@
 	\item[devops] \textit{Development and Operations}
 	\item[DNS] \textit{Domain Name System}
 	\item[IaaS] \textit{Infrastructure as a Service}
-	\item[IPMI] \textit{...}
-	\item[JMX] \textit{...}
+	\item[IPMI] \textit{Intelligent Platform Management Interface}
+	\item[JMX] \textit{Java Management Extensions}
 	\item[PaaS] \textit{Platform as a Service}
 	\item[RAM] \textit{Random Access Memory}
 	\item[SaaS] \textit{Software as a Service}
-	\item[SNMP] \textit{...}
+	\item[SNMP] \textit{Simple Network Management Protocol}
 	\item[SSH] \textit{Secure Shell}
 	\item[TDD] \textit{Test Driven Development}
 	\item[XP] \textit{Extreme Programming}
@@ -324,7 +324,7 @@ A segunda parte apresenta os resultados obtidos e realiza um comparativo entre o
 % ----------------------------------------------------------
 % PARTE - preparação da pesquisa
 % ----------------------------------------------------------
-\part{Preparação do relatório}
+\part{Desenvolvimento}
 
 % ---
 % Capitulos de Metodologia
@@ -346,6 +346,8 @@ A coleta dos dados foi feita através do acompanhamento das rotinas da empresa p
 Foi realizado um comparativo seguindo algumas métricas como: tempo necessário para entregar uma nova versão do \textit{software}; relação entre a quantidade de \textit{builds} quebradas e bem sucedidas por dia; quantidade de \textit{bugs} reportados por semana; a facilidade de manutenção do código; e a satisfação dos desenvolvedores com o processo de desenvolvimento. A partir desse comparativo podemos concluir as vantagens e desvantagens da solução proposta bem como avaliar a eficiência e eficácia do novo processo.
 
 \chapter{Levantamento bibliográfico}
+
+Este capítulo apresenta os conceitos teóricos relacionados as metodologias e procedimentos utilizados no desenvolvimento deste projeto.
 
 \section{Metodologia ágil}
 
@@ -427,6 +429,8 @@ De acordo com \citeonline{NewRelic:DevOps}, os principais fundamentos estabeleci
 % ---
 \chapter{Análise do cenário atual}
 
+Este capítulo apresenta uma análise das características da empresa alvo de estudo buscando descrever os processos e a estrutura organizacional da empresa no inicio do desenvolvimento deste projeto.
+
 \section{Associação de Desenvolvimento de Software, Produtos e Pessoas da Região dos Inconfidentes Mineiros - DevelOP}
 
 A DevelOP é uma associação de direito privado, constituída na forma de sociedade civil de fins não lucrativos, com autonomia administrativa e financeira, fundada em 2016 por um grupo de profissionais em tecnologia da informação na região dos inconfidentes mineiros. A Associação tem por finalidade central realizar ações sociais de utilidade pública na área de desenvolvimento de \textit{software}, produtos de \textit{software} e pessoas.
@@ -445,7 +449,7 @@ A comunicação é feita de maneira informal devido a proximidade dos funcionár
 
 \section{Recursos disponíveis}
 
-O time de desenvolvimento é composto por um desenvolvedor pleno e três estagiários incluindo o autor deste relatório. As áreas de \textit{design}, análise de negócios e jornalismo contam, cada uma, com apenas 1 funcionário.
+O time de desenvolvimento é composto por um desenvolvedor pleno e três estagiários. As áreas de \textit{design}, análise de negócios e jornalismo contam, cada uma, com apenas 1 funcionário.
 
 Devido a parceria que a empresa tem com a Universidade Federal de Ouro Preto, algumas vezes por ano ela recebe inter cambistas de experiência e área de atuação diversificada.
 
@@ -498,7 +502,7 @@ A \autoref{tab-code-analysis} apresenta dados analíticos referentes aos reposit
 	\label{tab-code-analysis}	
 	\begin{tabular}{p{7.15cm}|p{7.10cm}}
 		%\hline
-		\textbf{Métrica} & \textbf{Valor}  \\
+		\textbf{Métrica} & \textbf{Quantidade}  \\
 		\hline
 		Número de \textit{commits} realizados & 125 \\
 		\hline
@@ -567,6 +571,8 @@ A partir de todos esses dados levantados, nossa linha investigativa foi elaborad
 % ---
 
 \chapter{Procedimentos experimentais}
+
+Este capítulo descreve os procedimento realizados na empresa para atingir os objetivos do projeto, incluindo as dificuldades encontradas durante seu desenvolvimento.
 
 \section{Adaptando a rotina do time para aplicar as metodologias em prática}
 
@@ -841,6 +847,8 @@ A \textit{dashboard} foi configurada para exibir o monitoramento em tempo real d
 % ---
 \chapter{Análise do novo cenário}
 
+Este capítulo apresenta uma análise das características da empresa alvo de estudo no fim do desenvolvimento do projeto, demonstrando as mudanças mais significativas e apresentando as vantagens e desvantagens do novo processo de desenvolvimento.
+
 \section{Coleta de dados}
 
 A etapa de coleta de dados analíticos sobre o novo processo de desenvolvimento teve início no dia 11 de outubro de 2016. Durante essa etapa buscamos identificar quais foram as mudanças nas variáveis dependentes analisadas no começo do projeto, relacionadas a tarefas que fogem ao escopo de desenvolvimento e levantamento de requisitos, como atividades de compilação do código fonte, execução de testes manuais, configuração de ambientes de trabalho, etc. O acompanhamento e registro desses dados ocorreu até o dia 4 de novembro de 2016.
@@ -855,7 +863,7 @@ A \autoref{tab-code-analysis-new} apresenta dados analíticos referentes aos rep
 	\label{tab-code-analysis-new}	
 	\begin{tabular}{p{7.15cm}|p{7.10cm}}
 		%\hline
-		\textbf{Métrica} & \textbf{Valor}  \\
+		\textbf{Métrica} & \textbf{Quantidade}  \\
 		\hline
 		Número de \textit{commits} realizados & 434 \\
 		\hline
