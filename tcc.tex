@@ -429,7 +429,7 @@ De acordo com \citeonline{NewRelic:DevOps}, os principais fundamentos estabeleci
 % ---
 \chapter{Análise do cenário atual}
 
-Este capítulo apresenta uma análise das características da empresa alvo de estudo buscando descrever os processos e a estrutura organizacional da empresa no inicio do desenvolvimento deste projeto.
+Este capítulo apresenta uma análise de características em busca de descrever os processos e a estrutura organizacional da empresa no inicio do desenvolvimento deste projeto.
 
 \section{Associação de Desenvolvimento de Software, Produtos e Pessoas da Região dos Inconfidentes Mineiros - DevelOP}
 
@@ -478,7 +478,7 @@ Dos recursos que são relevantes para o objeto de estudo deste trabalho, a empre
 
 As metodologias envolvidas nos projetos da empresa são inspirados em métodos ágeis. Alguns utilizam \textit{SCRUM} e outros apenas \textit{Kanban}, isso varia de acordo com os requisitos e recursos disponíveis para cada projeto, mas de forma geral, a empresa sempre busca manter um quadro de atividades (\textit{Kanban}) e realizar reuniões frequentes.
 
-Através do acompanhamento do processo de desenvolvimento durante o período que este trabalho foi realizado, identifica-se um ciclo baseado em definição de requisitos, implementação e testes manuais. Inicialmente o coordenador do projeto realiza uma reunião com o time para especificar quais funcionalidades são prioritárias e detalhar o que precisa ser feito para seu desenvolvimento. Durante essa reunião é feita a divisão de atividades e a estipulação do tempo necessário por cada responsável. Uma pessoa é encarregada pelo registros das atividades no \textit{software} de gestão, e em seguida cada membro do time começa a trabalhar na tarefa que lhe foi atribuída.
+Através do acompanhamento do processo de desenvolvimento durante o período que este trabalho foi realizado, identifica-se um ciclo baseado em definição de requisitos, implementação e execução de testes manuais. Inicialmente o coordenador do projeto realiza uma reunião com o time para especificar quais funcionalidades são prioritárias e detalhar o que precisa ser feito para seu desenvolvimento. Durante essa reunião é feita a divisão de atividades e a estipulação do tempo necessário por cada responsável. Uma pessoa é encarregada pelo registros das atividades no \textit{software} de gestão, e em seguida cada membro do time começa a trabalhar na tarefa que lhe foi atribuída.
 
 Diariamente o time realiza reuniões de acompanhamento, onde informam seu progresso ao coordenador do projeto e tiram dúvidas com os demais colaboradores. Caso uma atividade seja concluída, uma nova pode ser atribuída.
 
@@ -543,7 +543,7 @@ A \autoref{tab-deploys} demonstra o tempo necessário por entrega de uma nova ve
 	\end{tabular}
 \end{table}
 
-Após a coleta de dados, uma entrevista foi realizada com o time de desenvolvimento onde foi solicitado que cada um citasse problemas marcantes que aconteceram com eles no decorrer do projeto com o objetivo de compreender a visão que o time tem sobre o processo de desenvolvimento em busca de identificar aspectos impactantes na rotina de trabalho que precisam ser melhorados. As seguintes respostas foram obtidas:
+Após a coleta de dados, uma entrevista foi realizada com o time de desenvolvimento onde foi solicitado que cada um citasse problemas marcantes que aconteceram com eles no decorrer do projeto com o objetivo de compreender a visão do time sobre o processo de desenvolvimento em busca de identificar aspectos impactantes na rotina de trabalho que precisam ser melhorados. As seguintes respostas foram obtidas:
 
 \begin{itemize}  
 	\item Algum membro do time esqueceu de apagar um diretório que estava em lugar indevido, o que ocasionou a sobrecarga do disco-rígido do servidor do cliente, pois havia uma unidade de baixa quantidade de armazenamento disponível alocada apenas para o sistema operacional, e esta ficou inoperante, exigindo a investigação e remoção dos arquivos indevidos.
@@ -580,11 +580,11 @@ No início da aplicação das novas metodologias e boas práticas, buscamos enco
 
 O envio de novas versões ao servidor de produção de forma manual era um dos fatores que impactavam no tempo. Problemas com a conexão de internet do escritório faziam com que a pessoa responsável pelo envio do artefato ficasse esperando entre 15 minutos até uma hora, e as vezes acontecia da conexão de internet ser interrompida atrapalhando o progresso do envio, sendo necessário começar o processo outra vez.
 
-Após o estudo deste cenário, percebemos que a melhor forma de otimizar este tempo de envio seria transferir a responsabilidade pela construção e envio do artefato a um servidor remoto com melhor conexão de internet, mas para que isso pudesse ser feito, era necessário que antes existisse uma maior garantia de estabilidade da versão existente no repositório principal, só assim o processo poderia ser automatizado de forma eficiente. Decidimos que a prática de integração contínua deveria ser o primeiro objetivo da empresa.
+Após o estudo de possíveis soluções, percebemos que a melhor forma de otimizar o tempo de envio seria transferir a responsabilidade pela construção e envio do artefato a um servidor remoto com melhor conexão de internet, mas para que isso pudesse ser feito, era necessário que antes existisse a garantia de estabilidade da versão existente no repositório principal, só assim o processo poderia ser automatizado de forma eficiente. Decidimos que a prática de integração contínua deveria ser a primeira adotada pela empresa.
 
 Para que a integração contínua apresente as vantagens de garantia de código estável, é necessário a existência de testes automatizados, requisito que o projeto não cumpria até então. Em conjunto com o time, o cronograma de atividades foi ajustado para que pudéssemos separar aproximadamente uma semana para implantar os testes e refatorar trechos de código que precisavam ser otimizados para permitir o bom funcionamento dessa abordagem. Durante essa semana tivemos algumas dificuldades para dividir o tempo entre testes e continuar implementando novas funcionalidades, os colaboradores precisaram fazer algumas horas extras pra atualizar a aplicação e ainda automatizar estes testes.
 
-Após esse período de automação de testes, o time percebeu que ainda não estava satisfeito com algumas implementações pois tinham dificuldades de fazer manutenção nelas, nesse momento percebemos que uma grande refatoração seria necessária para melhorar a qualidade do sistema. Apesar dessa refatoração ser necessária, a aplicação estava funcionando, e não era essencial refatorar o código do ponto de vista do cliente, então duas sugestões foram levantadas para mantermos a linha de desenvolvimento de novas funcionalidades operante e ainda sim conseguirmos melhorar a base de código existente. A primeira delas seria separar um dia inteiro por mês ou por semana para que o time ficasse por conta de refatorar o código, e chegamos a conclusão de que essa medida seria inviável por limitações de tempo e probabilidade do surgimento de emergências que comprometeriam essa abordagem. A segunda sugestão seria que o time todos os dias na parte da manhã, assim que chegassem ao escritório, separassem entre trinta minutos e uma hora para fazer apenas um \textit{commit} de refatoração ou de automação de testes, dessa forma, a passos lentos, chegaria uma hora onde sistema estaria mais estável. Essa abordagem foi aplicada durante todo o processo de implantação e apresentou ótimos resultados, com cerca de duas semanas o time já estava seguro de que a aplicação poderia aproveitar dos benefícios da prática de integração contínua.
+Após esse período de automação de testes, o time percebeu que ainda não estava satisfeito com algumas implementações pois tinham dificuldades de fazer manutenção nelas, nesse momento percebemos que uma grande refatoração seria necessária para melhorar a qualidade do sistema. Apesar dessa refatoração ser necessária, a aplicação estava funcionando, e não era essencial refatorar o código do ponto de vista do cliente, então duas sugestões foram levantadas para mantermos a linha de desenvolvimento de novas funcionalidades operante e ainda sim conseguirmos melhorar a base de código existente. A primeira delas seria separar um dia inteiro por mês ou por semana para que o time ficasse por conta de refatorar o código, e chegamos a conclusão de que essa medida seria inviável por limitações de tempo e probabilidade do surgimento de emergências que comprometeriam essa abordagem. A segunda sugestão seria que o time, todos os dias na parte da manhã, assim que chegassem ao escritório, separassem entre trinta minutos e uma hora para fazer apenas um \textit{commit} de refatoração ou de automação de testes, dessa forma, a passos lentos, chegaria uma hora onde sistema estaria mais estável. Essa abordagem foi aplicada durante todo o processo de implantação e apresentou ótimos resultados, com cerca de duas semanas o time já estava seguro de que a aplicação poderia aproveitar dos benefícios da prática de integração contínua.
 
 Agora que haviam testes automatizados e que o código estava melhorando, um novo processo de desenvolvimento estava emergindo. Quando uma nova funcionalidade era implantada, o desenvolvedor fazia um \textit{merge request} dentro da ferramenta de controle de versão, então outro desenvolvedor era acionado para fazer o \textit{code review}. Este segundo desenvolvedor analisava as alterações feitas no repositório e podia escolher entre duas ações: recusar a alteração submetida justificando os problemas encontrados ou aceita-la e permitir que o sistema executasse a \textit{build pipeline} do projeto. Essa prática de \textit{code review} alem de fazer com que o time tenha mais conhecimento do código que constrói, também agiliza a correção de problemas caso algum \textit{bug} seja injetado no sistema pelo desenvolvedor que solicita o \textit{merge request}.
 
@@ -598,7 +598,7 @@ Para elaboração de um ambiente de desenvolvimento com tarefas de operações a
 
 É importante que as ferramentas sejam integradas para agilizar a comunicação do time e que tenham interfaces de utilização que estejam de acordo com as boas práticas indicadas com as metodologias de desenvolvimento desejadas.
 
-Para aplicar essas metodologias no cenário atual da empresa, os seguintes tipos de ferramentas se fazem necessários:
+Para aplicar essas metodologias no cenário atual da empresa, os seguintes tipos de ferramentas se mostraram necessários:
 
 \begin{itemize}
 	\item Sistema de controle de versão com suporte a ramificações e pedidos de mesclagem de código submetidos a revisões preliminares.
@@ -615,7 +615,7 @@ Diante do conjunto de ferramentas identificadas, as consideradas não cruciais p
 
 \subsection{Sistema de controle de versão}
 
-Para escolher qual sistema de controle de versão usar levamos em conta que o time já possuía experiência prévia com \textit{git}, o que facilitaria sua utilização, e graças a análises feitas por \citeonline{DevMedia:VersionControl, InfoQ:VersionControl, SitePoint:VersionControl}, percebemos que o \textit{git} apresenta características que justificam ainda mais a sua escolha, mas ainda sim precisamos de uma ferramenta de controle de código fonte que tenha suporte a revisão e de preferência com uma interface gráfica para simplificar a gerência dos repositórios.
+Para escolher qual sistema de controle de versão usar levamos em conta que o time já possuía experiência prévia com \textit{git}, o que facilitaria sua utilização. Graças a análises feitas por \citeonline{DevMedia:VersionControl, InfoQ:VersionControl, SitePoint:VersionControl}, percebemos que o \textit{git} apresenta características que justificam ainda mais a sua escolha, mas ainda sim precisamos de uma ferramenta de controle de código fonte que tenha suporte a revisão e, de preferência, com uma interface gráfica para simplificar a gerência dos repositórios.
 
 A \autoref{tab-git} mostra os resultados da pesquisa para as ferramentas mais populares de controle de versão baseadas em git. A escolha dessas ferramentas foi feita baseando-se em recomendações de outros profissionais e recorrendo a análises feitas por sites como \citeonline{Slant:SourceControl} e \citeonline{StackShare:SourceControl}.
 
@@ -767,7 +767,7 @@ No início dos procedimentos de implantação das ferramentas escolhidas, foi re
 
 Foram realizadas tentativas de instalação do \textit{Fabric8} seguindo o passo a passo encontrado na documentação \cite{Fabric8:Docs}. No dia que teve início a implantação desse ambiente existiam 4 formas diferentes de se realizar a instalação da ferramenta, cada uma dependente de um serviço adicional diferente. Uma delas utilizava o \textit{Vagrant}, outra o \textit{MiniKube}, outra o \textit{MiniShift} e a última necessitava do \textit{Open Shift Origin} instalado no servidor.
 
-A primeira tentativa de instalação foi feita utilizando uma máquina virtual provisionada pelo \textit{Vagrant} seguindo o próprio tutorial da página do \textit{Fabric8}, porém após a instalação um erro ocorria sempre que uma tentativa de criação de projeto era realizada. Uma pesquisa foi realizada em tentativa de reparar esse erro e a melhor resposta obtida indicava que o problema acontecia devido a possível incompatibilidade entre a versão do sistema operacional do servidor e \textit{plugin} do \textit{Vagrant} chamando \textit{Landrush}, que é responsável pela descoberta de DNS dentro do ambiente virtualizado. Devido a impossibilidade de se alternar a versão do sistema operacional nessa etapa do projeto, essa possibilidade foi descartada.
+A primeira tentativa de instalação foi feita utilizando uma máquina virtual provisionada pelo \textit{Vagrant} seguindo o próprio tutorial da página do \textit{Fabric8}, porém após a instalação um erro ocorria sempre que uma tentativa de criação de projeto era realizada. Uma pesquisa foi realizada em tentativa de reparar esse erro e a melhor resposta obtida indicava que o problema acontecia devido a possível incompatibilidade entre a versão do sistema operacional do servidor e um \textit{plugin} do \textit{Vagrant} chamando \textit{Landrush}, que é responsável pela descoberta de DNS dentro do ambiente virtualizado. Devido a impossibilidade de se alternar a versão do sistema operacional nessa etapa do projeto, essa possibilidade foi descartada.
 
 Uma segunda tentativa de instalação foi feita utilizando o \textit{MiniKube}, porém essa forma tinha uma característica negativa de não persistir os projetos e a informação criada após a reinicialização do sistema, ou seja, sempre que o servidor era reiniciado todas as informações registradas eram perdidas. Devido a este aspecto essa opção foi descartada.
 
@@ -775,7 +775,7 @@ A terceira tentativa foi realizada utilizando o \textit{MiniShift}, mas este apr
 
 A quarta tentativa foi feita realizando a instalação do \textit{Open Shift Origin} através de uma imagem de contêiner fornecida pela \textit{Red Hat} no servidor\cite{OpenShift:InstallGuide}. Nessa abordagem, um serviço chamado \textit{Router} não conseguia as permissões adequadas para ser inicializado corretamente. 
 
-Devido a diversidade de problemas existentes em métodos alternativos de instalação dessa ferramenta ela foi descartada. Foi decidido que seria melhor ter um pouco mais de trabalho realizando a instalação de cada componente individualmente do que aplicar uma solução que aparece ainda ser instável.
+Devido a diversidade de problemas existentes em métodos alternativos de instalação dessa ferramenta ela foi descartada. Foi decidido que seria melhor ter um pouco mais de trabalho realizando a instalação de cada componente individualmente do que aplicar uma solução que parece ainda ser instável.
 
 \subsection{Instalação do \textit{Docker}}
 
@@ -847,18 +847,18 @@ A \textit{dashboard} foi configurada para exibir o monitoramento em tempo real d
 % ---
 \chapter{Análise do novo cenário}
 
-Este capítulo apresenta uma análise das características da empresa alvo de estudo no fim do desenvolvimento do projeto, demonstrando as mudanças mais significativas e apresentando as vantagens e desvantagens do novo processo de desenvolvimento.
+Este capítulo apresenta uma análise das características da empresa no fim do desenvolvimento do projeto, demonstrando as mudanças mais significativas e apresentando as vantagens e desvantagens do novo processo de desenvolvimento.
 
 \section{Coleta de dados}
 
 A etapa de coleta de dados analíticos sobre o novo processo de desenvolvimento teve início no dia 11 de outubro de 2016. Durante essa etapa buscamos identificar quais foram as mudanças nas variáveis dependentes analisadas no começo do projeto, relacionadas a tarefas que fogem ao escopo de desenvolvimento e levantamento de requisitos, como atividades de compilação do código fonte, execução de testes manuais, configuração de ambientes de trabalho, etc. O acompanhamento e registro desses dados ocorreu até o dia 4 de novembro de 2016.
 
-As tabelas 6 e 7 apresentam dados quantitativos referentes as etapas do novo processo de desenvolvimento. Graças a essas informações podemos analisar os resultados obtidos com a implantação das novas metodologias e boas práticas de desenvolvimento.
+As tabelas 7 e 8 apresentam dados quantitativos referentes as etapas do novo processo de desenvolvimento. Graças a essas informações podemos analisar os resultados obtidos com a implantação das novas metodologias e boas práticas de desenvolvimento.
 
 A \autoref{tab-code-analysis-new} apresenta dados analíticos referentes aos repositórios de código fonte da empresa.
 
 \begin{table}[htb]
-	\caption{Dados do repositório de código fonte depois no fim do projeto}
+	\caption{Dados do repositório de código fonte no fim do projeto}
 	
 	\label{tab-code-analysis-new}	
 	\begin{tabular}{p{7.15cm}|p{7.10cm}}
@@ -958,9 +958,9 @@ Ao compararmos os dados colhidos no fim do projeto com os do início, percebemos
 
 Lembrando que os dados no início do projeto foram coletados por dois meses e no fim apenas um mês, percebemos que agora o time realiza 7 vezes mais \textit{commits} e 6 vezes mais mesclagem de código, o que é reflexo da prática integração contínua. Como cada alteração é menor e é testada automaticamente graças as \textit{build pipelines} do \textit{Jenkins} e \textit{GitLab}, o esforço necessário para identificar e corrigir \textit{bugs} é reduzido.
 
-Percebemos também que o time realiza duas vezes mais entregas, e consegue ser em média 237 vezes mais rápido para disponibilizar uma nova versão do que era inicialmente, graças ao fato do código do repositório ser sempre confiável e estável e do processo de entrega ser automatizado com auxílio do \textit{Jenkins}.
+Percebemos também que o time realiza duas vezes mais entregas, e consegue ser em média 237 vezes mais rápido para disponibilizar uma nova versão do que era inicialmente, graças ao fato do código do repositório ser sempre confiável e do processo de entrega ser automatizado com auxílio do \textit{Jenkins}.
 
-A quantidade de \textit{bugs} reportados pelo cliente também apresentou uma redução significativa e devido ao tempo necessário de entrega ser menor, o tempo gasto para corrigir \textit{bugs} e colocar a correção em produção também é reduzido. O \textit{Zabbix} colabora nesse cenário por apresentar indicativos de consumo de recursos no servidor, agilizando o processo de investigação graças as informações coletadas.
+A quantidade de \textit{bugs} reportados pelo cliente também apresentou uma redução significativa. Devido ao tempo necessário de entrega ser menor, o tempo gasto para corrigir \textit{bugs} e colocar a correção em produção também é reduzido. O \textit{Zabbix} colabora nesse cenário por apresentar indicativos de consumo de recursos no servidor, agilizando o processo de investigação graças as informações coletadas.
 
 E por último, um fator positivo pode ser notado nas respostas dadas pelo time de desenvolvimento, que aparenta estar mais satisfeito com o trabalho realizado e tem mais tempo pra investir no que é realmente importante para o projeto.
 
@@ -978,7 +978,7 @@ E por último, o mais importante, incentivar as pessoas a aprender boas prática
 
 Os próximos passos de aperfeiçoamento deste projeto envolvem a implantação contínua, a centralização de logs e avaliação em tempo real.
 
-Na etapa atual de desenvolvimento ainda não é um requisito da aplicação ser cem porcento tolerante a falhas e altamente escalável, mas sabemos que chegará um momento onde isso será necessário, e para isso precisamos modificar a etapa final de implantação para suportar contêineres replicáveis, o que exigirá o uso de orquestradores e mais ferramentas.
+Na etapa atual de desenvolvimento dos projetos da empresa ainda não é um requisito fornecer aplicações altamente tolerante a falhas e escaláveis, mas sabemos que chegará um momento onde isso será necessário, e para isso precisamos modificar a etapa final de implantação para suportar contêineres replicáveis, o que exigirá o uso de orquestradores e mais ferramentas.
 
 Com o crescimento distribuído da aplicação, imaginamos também que chegará o ponto onde será necessário centralizar os logs e as informações de avaliação da aplicação. Hoje a quantidade reduzida de módulos não traz dificuldades de rastreio de \textit{bugs} ou registros de acontecimentos, mas isso pode complicar ao longo do tempo.
 
