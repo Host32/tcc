@@ -37,14 +37,14 @@
 
 % Customizações de Cores: fg significa cor do texto e bg é cor do fundo
 \setbeamercolor{normal text}{fg=black}
-\setbeamercolor{alerted text}{fg=red}
-\setbeamercolor{author}{fg=blue}
-\setbeamercolor{institute}{fg=blue}
-\setbeamercolor{date}{fg=green}
-\setbeamercolor{frametitle}{fg=red}
-\setbeamercolor{framesubtitle}{fg=brown}
-\setbeamercolor{block title}{bg=blue, fg=white}		%Cor do título
-\setbeamercolor{block body}{bg=gray, fg=darkgray}	%Cor do texto (bg= fundo; fg=texto)
+\setbeamercolor{alerted text}{fg=black}
+\setbeamercolor{author}{fg=black}
+\setbeamercolor{institute}{fg=black}
+\setbeamercolor{date}{fg=black}
+\setbeamercolor{frametitle}{fg=black}
+\setbeamercolor{framesubtitle}{fg=black}
+\setbeamercolor{block title}{bg=black, fg=black}		%Cor do título
+\setbeamercolor{block body}{bg=black, fg=black}	%Cor do texto (bg= fundo; fg=texto)
 
 \setbeamertemplate{caption}[numbered]
 
@@ -59,6 +59,14 @@
 \usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
 \usepackage{txfonts}			% Fontes virtuais
 % ---
+
+% exibir o numero do slite
+\addtobeamertemplate{navigation symbols}{}{%
+	\usebeamerfont{footline}%
+	\usebeamercolor[fg]{footline}%
+	\hspace{1em}%
+	\insertframenumber/\inserttotalframenumber
+}
 
 % --- Informações do documento ---
 \title{Projeto de Automação de Operações e Entrega Contínua para Empresa de Desenvolvimento de Software}
@@ -221,30 +229,23 @@ Maiores desafios encontrados por desenvolvedores em seu ambiente de trabalho \ci
 \begin{frame}
 	
 	\frametitle{Situação da empresa no início do projeto}
-	\framesubtitle{Dados coletados}
+	\framesubtitle{Problemas do cotidiano}
 	
-	\begin{table}[htb]
-		\caption{Dados do repositório de código fonte no início do projeto}
+	\begin{itemize}
 		
-		\label{tab-code-analysis}	
-		\begin{tabular}{p{7.15cm}|p{6.0cm}}
-			%\hline
-			\textbf{Métrica} & \textbf{Quantidade}  \\
-			\hline
-			Número de \textit{commits} realizados & 125 \\
-			\hline
-			Número de artefatos gerados & 65 \\
-			\hline
-			Número de mesclagem de código realizados & 6 \\
-			\hline
-			Número de \textit{bugs} reportados pelo cliente & 20 \\
-			\hline
-			Número de atividades desenvolvidas pelo time que foram registradas no sistema de controle de atividades & 70 \\
-			% \hline
-		\end{tabular}
-	\end{table}
+		\item Esquecer de apagar diretórios de locais indevidos
+		
+		\item Executar a versão de produção em diretórios incorretos
+		
+		\item Permissões indevidas
+		
+		\item Dificuldade em gerenciar configurações
+		
+		\item Execução de \textit{scripts} em produção sem os devidos testes anteriormente
+	\end{itemize}
 	
 \end{frame}
+
 
 \begin{frame}
 	
@@ -276,26 +277,6 @@ Maiores desafios encontrados por desenvolvedores em seu ambiente de trabalho \ci
 	
 \end{frame}
 
-
-\begin{frame}
-	
-	\frametitle{Situação da empresa no início do projeto}
-	\framesubtitle{Problemas do cotidiano}
-	
-	\begin{itemize}
-		
-		\item Esquecer de apagar diretórios de locais indevidos
-		
-		\item Executar a versão de produção em diretórios incorretos
-		
-		\item Permissões indevidas
-		
-		\item Dificuldade em gerenciar configurações
-		
-		\item Execução de \textit{scripts} em produção sem os devidos testes anteriormente
-	\end{itemize}
-	
-\end{frame}
 
 % ----------------- NOVO SLIDE --------------------------------
 \section{Trabalho realizado}
@@ -395,38 +376,6 @@ Maiores desafios encontrados por desenvolvedores em seu ambiente de trabalho \ci
 \end{frame}
 
 \section{Resultados obtidos}
-
-\begin{frame}
-	\frametitle{Resultados}
-	\framesubtitle{Dados coletados}
-	
-	\begin{table}[htb]
-		\caption{Dados do repositório de código fonte no fim do projeto}
-		
-		\label{tab-code-analysis-new}	
-		\begin{tabular}{p{7.15cm}|p{5.10cm}}
-			%\hline
-			\textbf{Métrica} & \textbf{Quantidade}  \\
-			\hline
-			Número de \textit{commits} realizados & 434 \\
-			\hline
-			Número de artefatos gerados & 115 \\
-			\hline
-			Número de mesclagem de código realizados & 19 \\
-			\hline
-			Número de mesclagem de código rejeitadas & 3 \\
-			\hline
-			Número de \textit{bugs} reportados pelo cliente & 6 \\
-			\hline
-			Número de atividades desenvolvidas pelo time que foram registradas no sistema de controle de atividades & 34 \\
-			\hline
-			Tempo médio de execução da \textit{build pipeline} & 5 minutos \\
-			% \hline
-		\end{tabular}
-	\end{table}
-	
-\end{frame}
-
 
 \begin{frame}
 	\frametitle{Resultados}
